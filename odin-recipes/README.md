@@ -1,1 +1,1 @@
-This is a project to display recipes in the browser. Upon completion, I will have understood and implemented basic HTML and CSS understanding.
+This is a project to display recipes in the browser. Upon completion, I will have understood and implemented basic HTML understanding.

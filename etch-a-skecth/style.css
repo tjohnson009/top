@@ -25,7 +25,8 @@ html {
   }
 
 .container {
-    border: var(--level1); 
+    /* border: var(--level1);  */
+    border: var(--level7); 
     width: 45%; 
     display: flex; 
     margin: 0 auto; 
@@ -38,7 +39,12 @@ html {
 
 .cell {
     flex: 1 1; 
-    border: var(--level2); 
+    /* border: var(--level2);  */
+    border: grey solid .25px; 
     width: auto; 
-    background-color: yellow;
+    /* background-color: yellow; */
+}
+
+.cell:hover {
+    /* cursor: pointer; */
 }

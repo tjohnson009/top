@@ -11,15 +11,34 @@
 
 html {
     box-sizing: border-box;
-    background-color: #89b0b0; 
+    background-color: #95a5a5; 
   }
 
 *, *:before, *:after {
     box-sizing: inherit;
+    padding: 0; 
+    margin: 0; 
+  }
+
+  h2 {
+    text-align: center;
   }
 
 .container {
     border: var(--level1); 
-    width: 75%; 
-    display: grid; 
+    width: 45%; 
+    display: flex; 
+    margin: 0 auto; 
+    background-color: #ffffff;
+    aspect-ratio: 1; 
+    flex-flow: column wrap; 
+    justify-content: space-evenly; 
+    align-content: stretch; 
+}
+
+.cell {
+    flex: 1 1 auto; 
+    border: var(--level2); 
+    width: auto; 
+    background-color: yellow;
 }

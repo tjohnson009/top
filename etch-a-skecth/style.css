@@ -1,0 +1,25 @@
+:root {
+    --level1: solid 1px red; 
+    --level2: solid 1px orange; 
+    --level3: solid 1px yellow;
+    --level4: solid 1px green; 
+    --level5: solid 1px blue; 
+    --level6: solid 1px indigo; 
+    --level7: solid 1px black;
+    --level8: solid 1px white;  
+  }
+
+html {
+    box-sizing: border-box;
+    background-color: #89b0b0; 
+  }
+
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+.container {
+    border: var(--level1); 
+    width: 75%; 
+    display: grid; 
+}

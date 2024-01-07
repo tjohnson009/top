@@ -1,9 +1,9 @@
-const DOM_ELEMENTS = {
+let DOM_ELEMENTS = {
     container: document.querySelector('.container'), 
     div: '<div class="cell"></div>', 
 }
 
-let size = 50; 
+let size = 15; 
 
 function createDivs() {
     for (let i=0; i < size**2; i++) {
@@ -23,6 +23,18 @@ function setSpacing() {
     // set flex property to be 1 1 (size / 100) * 100
 }
 
+function initializeColorChanger() {
+    let allCellsArray = Array.from(document.querySelectorAll('.cell')); 
+    allCellsArray.forEach(el => {
+        el.addEventListener('mouseover', changeBackgroundColor); 
+        // console.log(el); 
+    })
+}
+
+function changeBackgroundColor(event) {
+    event.target.style.backgroundColor = '#3dafff'; 
+}
+
 createDivs(); // might need to set the flex basis property dynamically depending on the ratio of 100 / size
 setSpacing(); 
-// DOM_ELEMENTS.container.append('<h1>HELLO</h1>'); 
+initializeColorChanger(); 

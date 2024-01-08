@@ -4,11 +4,13 @@ let DOM_ELEMENTS = {
     gridInput: document.querySelector('#grid-size'), 
     gridLabel: document.querySelector('#gridLabel'), 
     colorInput: document.querySelector('#color'), 
-    color: `#3f3d44`, 
+    color: `#3f3d44`, // default color - dark grey
+    colorfulMode: document.getElementById('colorful'), 
     
 }
 
 let size = 15; 
+// let colorfulMode = false; 
 
 function createDivs() {
     for (let i=0; i < size**2; i++) {
@@ -51,16 +53,29 @@ function addEventListeners() {
 
     //color input
     DOM_ELEMENTS.colorInput.addEventListener('change', (e) => {
-        console.log(e.target.value); 
+        // console.log(e.target.value); 
         // sets color value to the input value
         DOM_ELEMENTS.color = e.target.value; 
     }); 
 
+    // colorfulMode
+    DOM_ELEMENTS.colorfulMode.addEventListener('change', (e) => {
+        console.log(e); 
+        console.log(DOM_ELEMENTS.colorfulMode.value); 
+    })
 
 
 }
 
 function changeBackgroundColor(event) {
+    if (DOM_ELEMENTS.colorfulMode.checked) {
+        let r = Math.floor(Math.random() * 256); 
+        let g = Math.floor(Math.random() * 256); 
+        let b = Math.floor(Math.random() * 256); 
+        event.target.classList.add('colored'); 
+        event.target.style.backgroundColor = `rgba(${r}, ${g}, ${b}, 1)`; 
+        return; 
+    }
     event.target.style.backgroundColor = `${DOM_ELEMENTS.color}`; 
     event.target.classList.add('colored'); 
 }

@@ -71,7 +71,7 @@ html {
 .cell {
     flex: 1 1; 
     /* border: var(--level2);  */
-    border: grey solid .25px; 
+    border: rgba(128, 128, 128, 0.25) solid .25px; 
     width: auto; 
     /* background-color: yellow; */
 }

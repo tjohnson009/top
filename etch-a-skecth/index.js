@@ -37,13 +37,16 @@ function initializeColorChanger() {
 
 function addEventListeners() {
     //grid size input
-    DOM_ELEMENTS.gridInput.addEventListener('change', (e) => {
-        // prompt('What size grid? Min: 5 Max 75'); 
+    DOM_ELEMENTS.gridInput.addEventListener('input', (e) => {
         // console.log(DOM_ELEMENTS.gridInput.value); 
         DOM_ELEMENTS.gridInput.defaultValue = e.target.value; 
-        console.log(DOM_ELEMENTS.gridInput); 
-        DOM_ELEMENTS.gridLabel.innerHTML = `${e.target.value} x ${e.target.value}`; 
-        
+        // console.log(DOM_ELEMENTS.gridInput); 
+        DOM_ELEMENTS.gridLabel.innerHTML = `${e.target.value} x ${e.target.value}`;   
+        clearContainer(); 
+        size = e.target.value; 
+        createDivs(); 
+        setSpacing(); 
+        initializeColorChanger(); 
     })
 
     //color input
@@ -60,6 +63,10 @@ function addEventListeners() {
 function changeBackgroundColor(event) {
     event.target.style.backgroundColor = `${DOM_ELEMENTS.color}`; 
     event.target.classList.add('colored'); 
+}
+
+function clearContainer() {
+    DOM_ELEMENTS.container.replaceChildren(); 
 }
 
 createDivs(); // might need to set the flex basis property dynamically depending on the ratio of 100 / size

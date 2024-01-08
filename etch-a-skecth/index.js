@@ -6,6 +6,7 @@ let DOM_ELEMENTS = {
     colorInput: document.querySelector('#color'), 
     color: `#3f3d44`, // default color - dark grey
     colorfulMode: document.getElementById('colorful'), 
+    reset: document.querySelector('#reset'), 
     
 }
 
@@ -58,10 +59,18 @@ function addEventListeners() {
         DOM_ELEMENTS.color = e.target.value; 
     }); 
 
-    // colorfulMode
-    DOM_ELEMENTS.colorfulMode.addEventListener('change', (e) => {
-        console.log(e); 
-        console.log(DOM_ELEMENTS.colorfulMode.value); 
+    // // colorfulMode
+    // DOM_ELEMENTS.colorfulMode.addEventListener('change', (e) => {
+    //     console.log(e); 
+    //     console.log(DOM_ELEMENTS.colorfulMode.value); 
+    // })
+
+    //reset button
+    DOM_ELEMENTS.reset.addEventListener('click', (e) => {
+        clearContainer(); 
+        createDivs(); 
+        setSpacing(); 
+        initializeColorChanger(); 
     })
 
 

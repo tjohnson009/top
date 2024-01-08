@@ -23,7 +23,7 @@ html {
   body {
     border: var(--level1); 
     display: grid;
-    grid-template-rows: .2fr 1fr;  
+    grid-template-rows: auto 1fr;  
     grid-template-columns: 2.5fr 1fr; 
     padding: 0; 
     margin: 0; 
@@ -63,6 +63,9 @@ html {
 .controls {
     border: var(--level2); 
     height: 100%; 
+    display: grid; 
+    grid-template-rows: 1fr 1fr; 
+    grid-template-columns: 1fr 1fr;
 }
 
 .cell {
@@ -75,4 +78,8 @@ html {
 
 .cell:hover {
     /* cursor: pointer; */
+}
+
+#grid-size {
+    /* appearance: slider-vertical;  */
 }

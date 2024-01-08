@@ -2,7 +2,7 @@ let DOM_ELEMENTS = {
     container: document.querySelector('.container'), 
     div: '<div class="cell"></div>', 
     gridInput: document.querySelector('#grid-size'), 
-    gridLabel: document.querySelector('#grid-label'), 
+    gridLabel: document.querySelector('#gridLabel'), 
     colorInput: document.querySelector('#color'), 
     color: `#3f3d44`, 
     
@@ -39,7 +39,11 @@ function addEventListeners() {
     //grid size input
     DOM_ELEMENTS.gridInput.addEventListener('change', (e) => {
         // prompt('What size grid? Min: 5 Max 75'); 
-        console.log(DOM_ELEMENTS.gridInput.value); 
+        // console.log(DOM_ELEMENTS.gridInput.value); 
+        DOM_ELEMENTS.gridInput.defaultValue = e.target.value; 
+        console.log(DOM_ELEMENTS.gridInput); 
+        DOM_ELEMENTS.gridLabel.innerHTML = `${e.target.value} x ${e.target.value}`; 
+        
     })
 
     //color input

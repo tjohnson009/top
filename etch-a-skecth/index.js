@@ -7,6 +7,7 @@ let DOM_ELEMENTS = {
     color: `#3f3d44`, // default color - dark grey
     colorfulMode: document.getElementById('colorful'), 
     reset: document.querySelector('#reset'), 
+    darkenMode: document.getElementById('darken')
     
 }
 
@@ -77,12 +78,34 @@ function addEventListeners() {
 }
 
 function changeBackgroundColor(event) {
-    if (DOM_ELEMENTS.colorfulMode.checked) {
+    if (DOM_ELEMENTS.colorfulMode.checked && !DOM_ELEMENTS.darkenMode.checked) {
+        // DOM_ELEMENTS.darkenMode.checked = false; 
         let r = Math.floor(Math.random() * 256); 
         let g = Math.floor(Math.random() * 256); 
         let b = Math.floor(Math.random() * 256); 
         event.target.classList.add('colored'); 
         event.target.style.backgroundColor = `rgba(${r}, ${g}, ${b}, 1)`; 
+        return; 
+    }
+    if (DOM_ELEMENTS.darkenMode.checked && DOM_ELEMENTS.colorfulMode.checked) {
+        DOM_ELEMENTS.darkenMode.checked = false; 
+        return; 
+    }
+    if (DOM_ELEMENTS.darkenMode.checked && !DOM_ELEMENTS.colorfulMode.checked) {
+        event.target.classList.add('colored'); 
+        if (!event.target.style.backgroundColor) {
+            event.target.style.backgroundColor = DOM_ELEMENTS.color; 
+            event.target.style.opacity = 0.1; 
+        } else if (event.target.style.backgroundColor) {
+            // console.log(event.target.style.opacity); 
+            event.target.style.opacity = parseFloat(event.target.style.opacity) + 0.1; 
+        }
+
+        // console.log(event.target.style.backgroundColor); 
+        // let currentOpacity = event.target.style.opacity; 
+        // console.log(currentOpacity, typeof currentOpacity); 
+        // DOM_ELEMENTS.colorfulMode.checked = false; 
+        // event.target.style.backgroundColor = DOM_ELEMENTS.color; 
         return; 
     }
     event.target.style.backgroundColor = `${DOM_ELEMENTS.color}`; 

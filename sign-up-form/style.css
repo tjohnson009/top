@@ -58,29 +58,28 @@ body {
 }
 
 #hero {
-    border: 1px solid red; 
+    /* border: 1px solid red;  */
     width: 33%; 
     height: 100vh; 
     background-image: url(./src/anton-poznyak-in3-CLQb48A-unsplash.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
-    /* display: flex;
-    flex-direction: column;
-    justify-content: space-between;   */
 }
 
 .hero-content {
     height: 100%; 
     display: flex; 
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
     align-items: center;
 }
 
 .logo {
+    margin-top: 17.5rem; 
+    margin-bottom: 52rem; 
     display: flex; 
-    background-color: rgba(25,25,25, .8); 
+    background-color: rgba(0,0,0, .65); 
     width: calc(100% - 2rem); 
     justify-content: center;
     align-items: flex-end; 
@@ -99,6 +98,7 @@ body {
 }
 
 .photo-cred {
+    /* height: 10%;  */
     font-size: 1.25rem; 
     color: white; 
 }
@@ -108,7 +108,7 @@ body {
 }
 
 #info {
-    border: 1px solid blue; 
+    /* border: 1px solid blue;  */
     width: 67%; 
     height: 100vh; 
 }

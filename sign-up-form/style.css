@@ -25,25 +25,24 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
-    background-color: hsl(0, 0%, 95%)
 }
 ol, ul {
-	list-style: none;
+    list-style: none;
 }
 blockquote, q {
-	quotes: none;
+    quotes: none;
 }
 blockquote:before, blockquote:after,
 q:before, q:after {
-	content: '';
+    content: '';
 	content: none;
 }
 table {
-	border-collapse: collapse;
+    border-collapse: collapse;
 	border-spacing: 0;
 }
 
-  /*____________________________________*/
+/*____________________________________*/
 
 :root {
     font-size: 10px;
@@ -53,10 +52,11 @@ table {
 @font-face {
     font-family: "Norse Bold";
     src: url('./src/Norse-Bold.otf');
-  }
+}
 
 body {
     display: flex; 
+    background-color: hsl(0, 0%, 97%); 
 }
 
 #hero {
@@ -142,15 +142,20 @@ h4 {
 }
 
 #form {
-    background-color: white;
-    max-width: 60vw;
+    /* max-width: 60vw;
     padding-top: 2rem; 
     padding-bottom: 6rem;
-    padding-left: 5rem; 
+    padding-left: 5rem;  */
     /* padding-right: 20rem; */
-
+    
     fieldset {
+        max-width: 60vw;
+        padding-top: 2rem; 
+        padding-bottom: 6rem;
+        padding-left: 5rem; 
+        background-color: white;
         max-width: 100%; 
+        margin-bottom: 2vh; 
 
         h4 {
             margin-bottom: 2vh; 

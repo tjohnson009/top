@@ -28,15 +28,21 @@
         </div>
         <form action="https://httpbin.org/anything" method="post" id="form">
             <fieldset id="form-section">
-                <p>Let's do this!</p>
-                <label for="first">FIRST NAME<input type="text" id="first" required></label>
-                <label for="last">LAST NAME<input type="text" id="last" required></label>
-                <label for="email">EMAIL<input type="email" id="email" required></label>
-                <label for="phone">PHONE NUMBER<input type="text" id="phone" placeholder="689-123-4567" required></label>
-                <label for="password">PASSWORD<input type="password" id="password" required></label>
-                <label for="cornfirm">CONFIRM PASSWORD<input type="password" id="confirm" required></label>
-                <button type="submit">Create Account</button>
+                <h4>Let's do this!</h4>
+                <div class="inputs">
+                    <div class="first-3">
+                        <label for="first">FIRST NAME<input type="text" id="first" required></label>
+                        <label for="last">LAST NAME<input type="text" id="last" required></label>
+                        <label for="email">EMAIL<input type="email" id="email" required></label>
+                    </div>
+                    <div class="last-3">
+                        <label for="phone">PHONE NUMBER<input type="text" id="phone" placeholder="689-123-4567" required></label>
+                        <label for="password">PASSWORD<input type="password" id="password" required></label>
+                        <label for="cornfirm">CONFIRM PASSWORD<input type="password" id="confirm" required></label>
+                    </div>
+                </div>
             </fieldset>
+            <button type="submit">Create Account</button>
             </form>
             <br>
         <p class="login">Already have an account? <a>Log In</a></p>

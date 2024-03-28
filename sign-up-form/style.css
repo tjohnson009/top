@@ -195,9 +195,9 @@ h4 {
             padding: 0 1rem; 
         }
 
-        input[type="password"] {
+        /* input[type="password"] {
             border-color: red;
-        }
+        } */
 
         input:focus {
             box-shadow: 1px 1px 5px lightgrey; 

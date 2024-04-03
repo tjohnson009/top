@@ -48,12 +48,16 @@ table {
     font-size: 10px; 
     --basic-gray: #e2e8f0; 
     --copy-blue: #1992d4; 
+    /* --box-shadow: 0 5px 6px rgba(209, 215, 222, .8); */
+    --box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .container {
     height: 100vh; 
     display: grid;
     grid-template: 1fr 4fr / 1fr 4fr; 
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);  */
+    
 
     a:visited {
         text-transform: none;
@@ -71,6 +75,7 @@ table {
     background-color: azure;
     grid-row: 1/2; 
     grid-column: 2/3; 
+    box-shadow: var(--box-shadow); 
 
     .topline {
         display: flex; 
@@ -98,6 +103,7 @@ table {
         display: grid;
         grid-template-columns: 1fr 1fr; 
         align-items: center; 
+
 
         .hero-name {
             grid-column: 1/2; 
@@ -174,5 +180,7 @@ table {
 
     .trending {
         background-color: navajowhite;
+        /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);  */
+        box-shadow: var(--box-shadow); 
     }
 }

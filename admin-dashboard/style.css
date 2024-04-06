@@ -77,7 +77,7 @@ table {
     h5 {
         font-size: 1.4rem;
         font-weight: 550; 
-        letter-spacing: 112.75;
+        line-height: 1.5;
     }
     hr {
         border: none; /* Remove default border */
@@ -196,19 +196,45 @@ table {
     background-color: var(--basic-gray);
     display: grid; 
     grid-template: 1fr / 3fr 1fr; 
+    padding: 3rem 2rem;
     
+    h1 {
+        font-size: 2rem; 
+        font-weight: 500;
+        margin: 0; 
+    }
+
     .project-cards {
+        grid-column: 1/2; 
         background-color: var(--basic-gray);  
         display: grid; 
-        grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+        grid-template-rows: .25fr 10fr; 
+        /* grid-row: 1/1;  */
         /* column-gap: 2rem;  */
         gap: 2rem; 
-        margin: 2rem; 
+        /* margin-left: 2rem;  */
+        /* margin-bottom: 4rem; */
+        /* margin-top: 4rem;   */
+        
+        .project-title {
+            grid-row: 1/2; 
+            grid-column: 1/3; 
+            align-self: end; 
+            margin-bottom: -.75rem; 
+        }
+        
+        .cards {
+            display: grid; 
+            grid-row: 2/3; 
+            grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+            gap: 2rem; 
+        }
 
         .card {
             /* margin: 2rem;  */
             background-color: white;
-            height: 17.5rem; 
+            /* height: 17.5rem;  */
+            /* height: minmax(17.5rem, 1fr);  */
             /* width: 30rem;  */
             border-radius: 1rem .75rem; 
             border-left: .75rem solid var(--yellow); 
@@ -224,32 +250,82 @@ table {
     }
 
     .extras {
-        margin: 2rem 0;
-        margin-right: 2rem;  
         grid-column: 2/3; 
+        /* margin: 2rem 0; */
+        /* margin-right: 2rem;   */
+        /* grid-row: 1/1;  */
         display: grid; 
-        grid-template: 1fr 1fr/ 1fr; 
-        row-gap: 2rem; 
+        /* grid-template-rows: 1fr 10fr;  */
+        grid-template: .25fr 10fr .25fr 10fr / 1fr; 
+        /* row-gap: 2rem;  */
+        /* gap: 2rem;  */
+
+        .announcement-title {
+            grid-row: 1/2; 
+            align-self: end; 
+            margin-bottom: 1.35rem; 
+            margin-top: .85rem; 
+        }
         
         .announcements {
+            grid-row: 2/3; 
             background-color: white;
             border-radius: 1rem 1rem; 
             display: grid; 
-            grid-template-rows: repeat(3, 1fr);
+            grid-template-rows: 1fr .1fr 1fr .1fr 1fr;
             padding: 3rem; 
+            margin-bottom: 4rem;
+            box-shadow: var(--box-shadow);
 
-            .announcement p {
-                font-size: 1.25rem; 
-                line-height: 1.25; 
-                color: gray; 
+            .announcement {
+                margin: 0; 
+
+                p   {
+                    font-size: 1.25rem; 
+                    line-height: 1.25; 
+                    color: gray; 
+                }
             }
+        }
+
+        .trending-title {
+            grid-row: 3/4; 
+            margin-bottom: 1.4rem; 
         }
         
         .trending {
-            background-color: navajowhite;
+            display: grid;
+            grid-template-rows: repeat(4, minmax(50px, 1fr)); 
+            grid-row: 4/5; 
+            background-color: white;
             /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);  */
             box-shadow: var(--box-shadow); 
             border-radius: 1rem 1rem; 
+            padding: 2.5rem; 
+
+            h1 {
+                grid-row: 2/3; 
+            }
+
+            .trend {
+                display: grid; 
+                grid-template-columns: 1fr 2fr; 
+                grid-row: 1fr 1fr; 
+
+                div {
+                    grid-row: 1/3; 
+                    border: 1px solid red; 
+                    place-self: center;
+                    /* margin: 0 auto;  */
+                }
+
+                .username {
+                    align-self: end; 
+                }
+                .application {
+                    align-self: start; 
+                }
+            }
         }
     }
 }

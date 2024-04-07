@@ -160,6 +160,7 @@ table {
                 border-radius: 2rem 2rem; 
                 border: none; 
                 padding: .75rem 0; 
+                /* width: 100px;  */
                 color: white; 
                 font-weight: 600;
                 background-color: var(--copy-blue); 
@@ -174,23 +175,51 @@ table {
     background-color: var(--copy-blue); 
     color: white; 
     font-size: 2.25rem; 
+    display: grid; 
+    grid-template-rows: .1fr .5fr 1fr; 
+    padding-left: 2rem; 
 
     .dashboard {
         /* background-color: rebeccapurple;  */
-        margin-bottom: 7rem; 
+        /* margin-bottom: 7rem;  */
+        border: 1px solid green; 
+        grid-row: 1/2; 
+        /* align-items: center;  */
+        /* justify-items: center;  */
     }
 
     .primary-links {
-        /* background-color: green; */
+        grid-row: 2/3; 
+        border: 1px solid black; 
         display: grid; 
         grid-template-rows: 1fr; 
-        margin-bottom: 7rem; 
+
+        .links {
+        display: grid;
+        align-items: center; 
+
+            .link {
+                display: grid; 
+            }
+        }
     }
 
     .secondary-links {
+        grid-row: 3/4; 
         /* background-color: lime;  */
+        border: 1px solid yellow; 
         display: grid; 
         grid-template-rows: 1fr; 
+
+        .links {
+            padding-top: 5rem; 
+            /* display: grid;  */
+            /* align-items: end; */
+
+            p {
+                margin: 2rem auto; 
+            }
+        }
     }
 }
 

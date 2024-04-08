@@ -62,6 +62,11 @@ table {
         height: 6rem; 
         border-radius: 50%;
     }
+
+    .big-profile {
+        height: 7.5rem; 
+        border-radius: 50%;
+    }
 }
 
 .container {
@@ -120,7 +125,7 @@ table {
             .search {
                 background-color: var(--basic-gray);
                 border: none;
-                flex: .75; 
+                flex: .65; 
                 margin-left: 2%; 
                 border-radius: 2rem 2rem; 
                 height: 2.5rem; 
@@ -146,18 +151,19 @@ table {
             grid-column: 1/2; 
             display: grid; 
             grid-template: 2fr 3fr/ 1fr 4fr;
+            align-items: center;
 
             .hi-there {
                 grid-area: 1/2/2/3;
                 font-size: 1.25rem;
                 font-weight: 600;  
-                margin-bottom: .5rem; 
+                margin-bottom: -1.5rem; 
             }
 
             h3 {
                 grid-area: 2/2/3/3;
                 font-weight: 600; 
-                margin-top: .5rem; 
+                margin-top: -1rem; 
                 font-size: 2.4rem; 
                 
                 a {
@@ -168,6 +174,7 @@ table {
 
             .logo {
                 grid-area: 1/1/3/2; 
+                margin-left: 5rem; 
             }
         }
 
@@ -317,11 +324,31 @@ table {
             border-left: .75rem solid var(--yellow); 
             box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
             padding: 3rem 2rem; 
+            display: grid; 
+            grid-template-rows: .25fr 1fr .75fr; 
+
+            h4 {
+                grid-row: 1/2; 
+            }
 
             p {
+                grid-row: 2/3; 
                 font-size: 1.5rem; 
                 line-height: 1.25; 
                 color: gray; 
+            }
+
+            .icons {
+                grid-row: 3/4; 
+                /* border: 1px solid red;  */
+                display: grid;
+                grid-template-columns: 1fr;
+                justify-items: end;  
+                align-items: end;
+
+                svg {
+                    margin-left: 2rem;
+                }
             }
         }
     }
@@ -398,9 +425,12 @@ table {
 
                 .username {
                     align-self: end; 
+                    font-size: 1.4rem; 
                 }
                 .application {
                     align-self: start; 
+                    color: gray; 
+                    font-size: 1.4rem; 
                 }
             }
         }

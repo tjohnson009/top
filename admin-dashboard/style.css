@@ -129,7 +129,7 @@ table {
             .search {
                 background-color: var(--basic-gray);
                 border: none;
-                flex: .65; 
+                flex: 1; 
                 margin-left: 2%; 
                 border-radius: 2rem 2rem; 
                 height: 2.5rem; 

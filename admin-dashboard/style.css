@@ -52,6 +52,11 @@ table {
     /* --box-shadow: 0 5px 6px rgba(209, 215, 222, .8); */
     --box-shadow: 0 5px 5px rgba(0, 0, 0, 0.2);
     font-family: Arial, Helvetica, sans-serif; 
+
+    svg {
+        height: 2.5rem; 
+        /* color: white;  */
+    }
 }
 
 .container {
@@ -176,30 +181,45 @@ table {
     color: white; 
     font-size: 2.25rem; 
     display: grid; 
-    grid-template-rows: .1fr .5fr 1fr; 
+    grid-template-rows: .2fr 1fr 2fr; 
     padding-left: 2rem; 
 
     .dashboard {
         /* background-color: rebeccapurple;  */
         /* margin-bottom: 7rem;  */
-        border: 1px solid green; 
-        grid-row: 1/2; 
+        /* border: 1px solid green;  */
+        /* grid-row: 1/2;  */
+        display: grid; 
+        align-items: center;
+        grid-template: 1fr / .75fr 3fr;
+        font-weight: bold; 
+        font-size: 2.65rem; 
+        gap: 1.1rem; 
+        margin-left: -1.25rem; 
         /* align-items: center;  */
         /* justify-items: center;  */
+
+        svg {
+            height: 5rem;         
+        }
     }
 
     .primary-links {
         grid-row: 2/3; 
-        border: 1px solid black; 
+        /* border: 1px solid black;  */
         display: grid; 
-        grid-template-rows: 1fr; 
+        /* grid-template-columns: 1fr;  */
 
         .links {
+        grid-column: 1/2; 
         display: grid;
+        /* grid-template-columns: 1fr;  */
         align-items: center; 
 
             .link {
                 display: grid; 
+                grid-template: 1fr / .75fr 3fr;
+                align-items: center;
             }
         }
     }
@@ -207,7 +227,7 @@ table {
     .secondary-links {
         grid-row: 3/4; 
         /* background-color: lime;  */
-        border: 1px solid yellow; 
+        /* border: 1px solid yellow;  */
         display: grid; 
         grid-template-rows: 1fr; 
 
@@ -216,8 +236,11 @@ table {
             /* display: grid;  */
             /* align-items: end; */
 
-            p {
+            .link {
                 margin: 2rem auto; 
+                display: grid; 
+                grid-template: 1fr / .75fr 3fr;
+                align-items: center;
             }
         }
     }

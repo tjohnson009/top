@@ -140,6 +140,10 @@ table {
                 justify-content: start;
                 align-items: center;
             }
+
+            img {
+                height: 5rem; 
+            }
     }
 
     .bottomline {

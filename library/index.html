@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Library</title>
+</head>
+<body>
+    <div class="container">
+        <div class="title"><h1>Library</h1></div>
+        <div class="inputs-div">
+            <form action="https://httpbin.org/anything" id='form'>
+                <label for="title">Book Title: </label>
+                <input type="text" name="title" id="title" placeholder="The Count of Monte Cristo" required>
+                <label for="author">Author: </label>
+                <input type="text" name="author" id="author" placeholder="Alexandre Dumas" required>
+                <label for="pageCount">Page Count: </label>
+                <input type="text" name="pageCount" id="pageCount" placeholder="100" required>
+                <button type="submit" id="submit">Add Book</button>
+            </form>
+            <div class="library">
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>

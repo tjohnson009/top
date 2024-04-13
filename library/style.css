@@ -10,11 +10,14 @@
     h1 {
         font-size: 5rem; 
     }
+
+    svg {
+        height: 4rem;
+    }
 }
 
 .title {
     margin: 0 auto; 
-    padding: 2rem 0; 
 }
 
 .container {
@@ -22,7 +25,7 @@
     grid-template: 1fr 6fr / 3fr 1fr; 
     /* background-color: pink; */
     height: 100vh; 
-    padding: 0 2rem; 
+    padding: 2rem 2rem; 
     column-gap: 2rem;
 }
 
@@ -35,15 +38,57 @@
     grid-area: 2/1/3/2;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
+    grid-auto-flow: row;
+    grid-auto-rows: minmax(250px, 1fr); 
     /* background-color: blue; */
     gap: 20px; 
+    overflow: auto; 
 
     .book {
         border: 1px solid red; 
+        display: grid; 
+        padding: 1.5rem; 
+        
+        .book-info {
+            grid-area: 1/1/5/3; 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+
+            .book-title {
+                grid-area: 1/1/2/3; 
+            }
+
+            .book-author {
+                grid-area: 2/1/3/3; 
+            }
+
+            .book-pages {
+                grid-area: 3/1/4/3; 
+            }
+
+            .read-delete {
+                display: grid; 
+                grid-template-columns: 2fr 1fr;
+                grid-area: 4/1/5/3; 
+
+                .read {
+                    grid-area: 1/1/2/2; 
+                }
+                .delete {
+                    grid-area: 1/2/2/3; 
+                }
+            }
+        }
     }
 }
 
 .information {
     display: grid; 
     grid-area: 2/2/3/3; 
+
+    .data {
+        display: grid; 
+        place-items: center;
+    }
 }

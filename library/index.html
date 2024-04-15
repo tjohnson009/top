@@ -1,115 +1,147 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
     <title>Library</title>
 </head>
+
 <body>
     <div class="container">
-        <div class="title"><h1>My Library</h1></div>
-        <div class="form-div" hidden>
-            <form action="https://httpbin.org/anything" id='form'>
-                <label for="title">Book Title: </label>
-                <input type="text" name="title" id="title" placeholder="The Count of Monte Cristo" required>
-                <label for="author">Author: </label>
-                <input type="text" name="author" id="author" placeholder="Alexandre Dumas" required>
-                <label for="pageCount">Page Count: </label>
-                <input type="text" name="pageCount" id="pageCount" placeholder="100" required>
-                <button type="submit" id="submit">Add Book</button>
-            </form>
+        <div class="title">
+            <h1>My Library</h1>
         </div>
-            <div class="library">
-                <div class="book">
-                    <div class="book-info">
-                        <div class="book-title">The Count of Monte Cristo</div>
-                        <div class="book-author">Alexandre Dumas</div>
-                        <div class="book-pages">449</div>
-                        <div class="read-delete">
-                            <div class="read"><button>Unread</button></div>
-                            <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>trash-can-outline</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg></div>
-                        </div>
-                    </div>
+        <dialog class="form">
+            <form action="https://httpbin.org/anything" id='form'>
+                <label for="title">Book Title: <input type="text" name="title" id="title"
+                        placeholder="The Count of Monte Cristo" required>
+                </label>
+                <label for="author">Author:
+                    <input type="text" name="author" id="author" placeholder="Alexandre Dumas" required>
+                </label>
+                <label for="pageCount">Page Count:
+                    <input type="number" name="pageCount" id="pageCount" placeholder="100" pattern="^(0|[1-9]\d*)$"
+                        required>
+                </label>
+                <div id="checkbox">
+                    <label for="read">Finished: 
+                    </label>
+                        <input type="checkbox" name="read" id="read" required>
+                    <button type="submit" id="submit">Add Book</button>
                 </div>
-                <div class="book">
-                    <div class="book-info">
-                        <div class="book-title">The Count of Monte Cristo</div>
-                        <div class="book-author">Alexandre Dumas</div>
-                        <div class="book-pages">449</div>
-                        <div class="read-delete">
-                            <div class="read"><button>Unread</button></div>
-                            <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>trash-can-outline</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="book">
-                    <div class="book-info">
-                        <div class="book-title">The Count of Monte Cristo</div>
-                        <div class="book-author">Alexandre Dumas</div>
-                        <div class="book-pages">449</div>
-                        <div class="read-delete">
-                            <div class="read"><button>Unread</button></div>
-                            <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>trash-can-outline</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="book">
-                    <div class="book-info">
-                        <div class="book-title">The Count of Monte Cristo</div>
-                        <div class="book-author">Alexandre Dumas</div>
-                        <div class="book-pages">449</div>
-                        <div class="read-delete">
-                            <div class="read"><button>Unread</button></div>
-                            <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>trash-can-outline</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="book">
-                    <div class="book-info">
-                        <div class="book-title">The Count of Monte Cristo</div>
-                        <div class="book-author">Alexandre Dumas</div>
-                        <div class="book-pages">449</div>
-                        <div class="read-delete">
-                            <div class="read"><button>Unread</button></div>
-                            <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>trash-can-outline</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="book">
-                    <div class="book-info">
-                        <div class="book-title">The Count of Monte Cristo</div>
-                        <div class="book-author">Alexandre Dumas</div>
-                        <div class="book-pages">449</div>
-                        <div class="read-delete">
-                            <div class="read"><button>Unread</button></div>
-                            <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>trash-can-outline</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg></div>
-                        </div>
-                    </div>
-                </div>
-                <div class="book">
-                    <div class="book-info">
-                        <div class="book-title">The Count of Monte Cristo</div>
-                        <div class="book-author">Alexandre Dumas</div>
-                        <div class="book-pages">449</div>
-                        <div class="read-delete">
-                            <div class="read"><button>Unread</button></div>
-                            <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>trash-can-outline</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg></div>
-                        </div>
-                    </div>
-                </div>
-                
+            </form>
+            <div class="close-button"><label for="close-button">Close </label>
+                <svg id="close-button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <title>close-box-outline</title>
+                    <path
+                        d="M19,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3M19,19H5V5H19V19M17,8.4L13.4,12L17,15.6L15.6,17L12,13.4L8.4,17L7,15.6L10.6,12L7,8.4L8.4,7L12,10.6L15.6,7L17,8.4Z" />
+                </svg>
             </div>
-            <div class="information">
-                <div class="data">
-                    <p class="datapoint">1</p>
-                    <p class="datapoint">1</p>
-                    <p class="datapoint">1</p>
-                    <p class="datapoint">1</p>
-                    <p class="datapoint">1</p>
+        </dialog>
+        <div class="library">
+            <div class="add-book">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <title>plus-thick</title>
+                    <path d="M20 14H14V20H10V14H4V10H10V4H14V10H20V14Z" />
+                </svg>
+                <p>Add Book</p>
+            </div>
+            <div class="book">
+                <div class="book-info">
+                    <div class="book-title">Example Book</div>
+                    <div class="book-author">John Doe</div>
+                    <div class="book-pages">449 pages</div>
+                    <div class="read-delete">
+                        <div class="read"><button class="read-button">Unread</button></div>
+                        <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <title>trash-can-outline</title>
+                                <path
+                                    d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" />
+                            </svg></div>
+                    </div>
                 </div>
             </div>
+            <!-- <div class="book">
+                    <div class="book-info">
+                        <div class="book-title">The Count of Monte Cristo</div>
+                        <div class="book-author">Alexandre Dumas</div>
+                        <div class="book-pages">449 pages</div>
+                        <div class="read-delete">
+                            <div class="read"><button>Unread</button></div>
+                            <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>trash-can-outline</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book">
+                    <div class="book-info">
+                        <div class="book-title">The Count of Monte Cristo</div>
+                        <div class="book-author">Alexandre Dumas</div>
+                        <div class="book-pages">449 pages</div>
+                        <div class="read-delete">
+                            <div class="read"><button>Unread</button></div>
+                            <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>trash-can-outline</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book">
+                    <div class="book-info">
+                        <div class="book-title">The Count of Monte Cristo</div>
+                        <div class="book-author">Alexandre Dumas</div>
+                        <div class="book-pages">449 pages</div>
+                        <div class="read-delete">
+                            <div class="read"><button>Unread</button></div>
+                            <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>trash-can-outline</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg></div>
+                        </div>
+                    </div>
+                </div> -->
+            <!--  <div class="book">
+                    <div class="book-info">
+                        <div class="book-title">The Count of Monte Cristo</div>
+                        <div class="book-author">Alexandre Dumas</div>
+                        <div class="book-pages">449</div>
+                        <div class="read-delete">
+                            <div class="read"><button>Unread</button></div>
+                            <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>trash-can-outline</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book">
+                    <div class="book-info">
+                        <div class="book-title">The Count of Monte Cristo</div>
+                        <div class="book-author">Alexandre Dumas</div>
+                        <div class="book-pages">449</div>
+                        <div class="read-delete">
+                            <div class="read"><button>Unread</button></div>
+                            <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>trash-can-outline</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="book">
+                    <div class="book-info">
+                        <div class="book-title">The Count of Monte Cristo</div>
+                        <div class="book-author">Alexandre Dumas</div>
+                        <div class="book-pages">449</div>
+                        <div class="read-delete">
+                            <div class="read"><button>Unread</button></div>
+                            <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>trash-can-outline</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg></div>
+                        </div>
+                    </div>
+                </div> -->
+
+        </div>
+        <div class="information">
+            <div class="data">
+                <p class="datapoint">1</p>
+                <p class="datapoint">1</p>
+                <p class="datapoint">1</p>
+                <p class="datapoint">1</p>
+                <p class="datapoint">1</p>
+            </div>
+        </div>
     </div>
     <script src="./index.js"></script>
 </body>
+
 </html>

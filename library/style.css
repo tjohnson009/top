@@ -13,6 +13,67 @@
 
     svg {
         height: 4rem;
+        cursor: pointer;
+    }
+
+    dialog {
+        height: 50vh; 
+        width: 30vw; 
+        /* display: grid;  */
+        /* place-items: center; */
+        grid-template-rows: 3fr 1fr; 
+        justify-items: center;
+        place-self: center;
+        background-color: rgba(155,155,155, .9);
+        padding: 2rem; 
+
+        #form {
+            display: grid; 
+            grid-template-rows: repeat(4, 1fr); 
+            justify-items: center;
+            /* border: 1px solid red;   */
+            width: 85%; 
+
+            label {
+                width: 100%; 
+                font-size: 2rem; 
+            }
+
+            input {
+                width: 65%;
+                height: 2.5rem; 
+            }
+
+            #title {
+                grid-row: 1/2; 
+                /* width: 65%;
+                height: 2rem;  */
+            }
+            #author {
+                grid-row: 2/3; 
+            }
+            #pageCount {
+                grid-row: 3/4; 
+            }
+            #checkbox {
+                display: grid; 
+                grid-template-columns: 2fr 1fr;
+                grid-row: 4/5; 
+                width: 100%; 
+
+                #read {
+                    grid-column: 1/2; 
+                } 
+
+                #submit {
+                    grid-column: 2/3; 
+                }
+            }
+        }
+    }
+
+    .close-button {
+        background: none; 
     }
 }
 
@@ -38,17 +99,42 @@
     grid-area: 2/1/3/2;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-template-rows: repeat(auto-fit, minmax(250px, 1fr));
+    /* grid-template-columns: repeat(auto-fit, clamp(200px, 40rem, 1fr)); */
+    /* grid-template-rows: repeat(auto-fit, minmax(250px, 40rem)); */
+    grid-template-rows: repeat(auto-fit, clamp(250px, 40rem, 1fr));
     grid-auto-flow: row;
-    grid-auto-rows: minmax(250px, 1fr); 
+    grid-auto-rows: minmax(30rem, 1fr); 
     /* background-color: blue; */
     gap: 20px; 
-    overflow: auto; 
+    overflow: auto;  
+
+    .add-book { 
+        display: grid; 
+        place-items: center;
+        border: 1px solid purple; 
+        height: 30rem; 
+        cursor: pointer; 
+        border-radius: .75rem .75rem; 
+        /* width: 200px;  */
+
+        svg {
+            height: 15rem; 
+        }
+
+        p {
+            font-size: 2.5rem; 
+        }
+        
+    }
 
     .book {
-        border: 1px solid red; 
+        /* border: 1px solid red;  */
+        background-color: beige;
+        border-radius: .75rem .75rem; 
         display: grid; 
         padding: 1.5rem; 
+        font-size: 2.5rem; 
+        height: 30rem; 
         
         .book-info {
             grid-area: 1/1/5/3; 
@@ -71,7 +157,7 @@
                 display: grid; 
                 grid-template-columns: 2fr 1fr;
                 grid-area: 4/1/5/3; 
-
+                
                 .read {
                     grid-area: 1/1/2/2; 
                 }
@@ -89,6 +175,8 @@
 
     .data {
         display: grid; 
-        place-items: center;
+        justify-content: center;
+        align-content: start;
+        row-gap: 5rem; 
     }
 }

@@ -21,8 +21,12 @@ function Book(title, author, pages) {
         return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read}`; 
     } 
 
-    makeUIComponent = () => {
+    // removeFromLibrary = (e) => {
+    //     console.log(); 
+    // }
 
+   returnUIComponent = () => {
+        return ``;  
     }
 }
 
@@ -61,28 +65,45 @@ function addToLibrary(e) { // takes the input of the form and creates a book obj
 function renderBooks() {
     // clear current books from UI
     let allBooks = Array.from(document.querySelectorAll('.book')); 
-    allBooks.forEach(book => {
-        book.remove(); 
+    allBooks.forEach(DOMBook => {
+        DOMBook.remove();
     }); 
     // loop through array 
-    myLibrary.forEach(book => {
+    myLibrary.forEach((DOMBook, index) => {
         // console.log(book); 
-        document.querySelector('.library').insertAdjacentHTML('beforeend', 
-    `<div class="book">
-    <div class="book-info">
-    <div class="book-title">${book.title}</div>
-    <div class="book-author">${book.author}</div>
-    <div class="book-pages">${book.pages} pages</div>
-    <div class="read-delete">
-    <div class="read"><button>${book.read ? 'Read' : 'Unread'}</button></div>
-    <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>trash-can-outline</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg></div>
-    </div>
-    </div>
-    </div>`); 
+        // document.querySelector('.library').insertAdjacentHTML('beforeend', 
+        document.querySelector('.add-book').insertAdjacentHTML('afterend', 
+        `<div class="book" data-id='${index}'>
+        <div class="book-info">
+        <div class="book-title">${DOMBook.title}</div>
+        <div class="book-author">${DOMBook.author}</div>
+        <div class="book-pages">${DOMBook.pages} pages</div>
+        <div class="read-delete">
+        <div class="read"><button>${DOMBook.read ? 'Read' : 'Unread'}</button></div>
+        <div class="delete"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>trash-can-outline</title><path d="M9,3V4H4V6H5V19A2,2 0 0,0 7,21H17A2,2 0 0,0 19,19V6H20V4H15V3H9M7,6H17V19H7V6M9,8V17H11V8H9M13,8V17H15V8H13Z" /></svg></div>
+        </div>
+        </div>
+        </div>`); 
     })
-    // append div for each book object withh proper information
+
+    // add event listeners on the books delete buttons
+    let deleteButtons = Array.from(document.querySelectorAll('.delete')); 
+    deleteButtons.forEach(button => {
+        console.log(button); 
+        button.firstChild.addEventListener('click', function(e) {
+            removeFromLibrary(e); 
+        })
+    })
 
 
+}
+
+function removeFromLibrary(e) {
+    e.stopPropagation(); 
+    // let bookDiv = e.target.parentElement.parentElement.parentElement.parentElement.parentElement; // not ideal... but it works
+    let bookDiv = e.target.closest('.book'); 
+    console.log(bookDiv); 
+    console.log(myLibrary[bookDiv.dataset.id]); 
 }
 
 addBookToLibrary.addEventListener('click', (e) => {

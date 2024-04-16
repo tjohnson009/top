@@ -9,10 +9,6 @@ const libraryDiv = document.querySelector('.library');
  
 const inputs = Array.from(document.querySelectorAll('input')); 
 
-function Library() {
-    this.bookCount = 0; 
-}
-
 function Book(title, author, pages) { // constructor
     this.title = title; 
     this.author = author; 
@@ -118,6 +114,10 @@ addBookToLibrary.addEventListener('click', (e) => {
 addBookFormButton.addEventListener('click', function(e) {
     e.preventDefault(); 
     addToLibrary(e); 
+    if (myLibrary.length) {
+        updateLibraryInfo(); 
+        updateLibraryDOM(); 
+    }
     // formDialog.close(); 
     // formDialog.style.display = 'none';
 })
@@ -137,6 +137,45 @@ libraryDiv.addEventListener('click', function(e) {
         // change the dom
         e.target.textContent = bookObj.read ? 'Read' : 'Unread'; 
         console.log(bookObj); 
+        updateLibraryInfo(); 
+        updateLibraryDOM(); 
     }
 })
 
+function Library() {
+    this.bookCount = 0; 
+    this.totalPages = 0; 
+    this.totalFinished = 0; 
+    this.totalUnread = 0; 
+}
+
+let libraryInformation = new Library(); 
+
+function updateLibraryInfo() {
+    libraryInformation.bookCount = myLibrary.length; 
+    libraryInformation.totalPages = myLibrary.reduce((acc, current) => {
+        if (current.read) {
+            console.log(current.pages); 
+            return acc += parseInt(current.pages); 
+        } else {
+            return acc; 
+        }
+    }, 0); 
+    libraryInformation.totalFinished = myLibrary.reduce((acc, bookObj) => {
+        if (bookObj.read) {
+            return acc += 1; 
+        } else {
+            return acc; 
+        }
+    }, 0); 
+    libraryInformation.totalUnread = libraryInformation.bookCount - libraryInformation.totalFinished; 
+    console.log(libraryInformation); 
+}
+
+function updateLibraryDOM() {
+    console.log('Updating library'); 
+    document.querySelector('.total-books').textContent = libraryInformation.bookCount; 
+    document.querySelector('.total-pages').textContent = libraryInformation.totalPages; 
+    document.querySelector('.total-books-read').textContent = libraryInformation.totalFinished; 
+    document.querySelector('.total-books-unread').textContent = libraryInformation.totalUnread; 
+}

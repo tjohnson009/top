@@ -104,6 +104,8 @@ function removeFromLibrary(e) {
 
     // reindex/rerender the DOM
     renderBooks(); 
+    updateLibraryInfo();
+    updateLibraryDOM(); 
 }
 
 addBookToLibrary.addEventListener('click', (e) => {

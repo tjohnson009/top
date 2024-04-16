@@ -180,3 +180,216 @@
         row-gap: 5rem; 
     }
 }
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 3fr 1fr;
+    grid-gap: 2rem;
+    padding: 2rem;
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.library {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-gap: 2rem;
+}
+
+.add-book {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #666;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.add-book:hover {
+    background-color: #f0f0f0;
+}
+
+.add-book svg {
+    width: 6rem;
+    height: 6rem;
+    fill: #666;
+    margin-bottom: 1rem;
+}
+
+.book {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.book:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.book-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.book-title,
+.book-author,
+.book-pages {
+    margin-bottom: 1rem;
+}
+
+.read-button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.read-button:hover {
+    background-color: #0056b3;
+}
+
+.delete svg {
+    width: 2rem;
+    height: 2rem;
+    fill: #666;
+    cursor: pointer;
+    transition: fill 0.3s ease;
+}
+
+.delete svg:hover {
+    fill: #ff0000;
+}
+
+.information {
+    background-color: #fff;
+    padding: 2rem;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+}
+
+.data {
+    text-align: center;
+}
+
+.datapoint {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: #333;
+}
+
+.total-books,
+.total-pages,
+.total-books-read,
+.total-books-unread {
+    font-weight: bold;
+}
+
+.container {
+    background-image: linear-gradient(to bottom right, #e0e0e0, #f0f0f0);
+}
+
+/* Style the dialog background */
+.dialog {
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* Style the form inputs */
+input[type="text"],
+input[type="number"],
+input[type="checkbox"] {
+    border: 1px solid #ccc;
+    border-radius: 0.3rem;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Style the submit button */
+#submit {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 0.3rem;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#submit:hover {
+    background-color: #218838;
+}
+
+/* Style the close button */
+#close-button {
+    fill: #666;
+    transition: fill 0.3s ease;
+}
+
+#close-button:hover {
+    fill: #ff0000;
+}
+
+/* Improve the hover effect on books */
+.book:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Style the book info */
+.book-info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.book-title,
+.book-author,
+.book-pages {
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+/* Style the read button */
+.read-button {
+    padding: 0.5rem 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.read-button:hover {
+    background-color: #0056b3;
+}
+
+/* Style the delete button */
+.delete svg {
+    fill: #666;
+    cursor: pointer;
+    transition: fill 0.3s ease;
+}
+
+.delete svg:hover {
+    fill: #ff0000;
+}

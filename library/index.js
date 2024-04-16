@@ -1,4 +1,4 @@
-const myLibrary = []; 
+let myLibrary = []; 
 const form = document.querySelector('#form'); 
 const formDialog = document.querySelector('.form'); 
 const addBookFormButton = document.querySelector('#submit');
@@ -71,8 +71,8 @@ function renderBooks() {
     // loop through array 
     myLibrary.forEach((DOMBook, index) => {
         // console.log(book); 
-        // document.querySelector('.library').insertAdjacentHTML('beforeend', 
-        document.querySelector('.add-book').insertAdjacentHTML('afterend', 
+        document.querySelector('.library').insertAdjacentHTML('beforeend', 
+        // document.querySelector('.add-book').insertAdjacentHTML('afterend', 
         `<div class="book" data-id='${index}'>
         <div class="book-info">
         <div class="book-title">${DOMBook.title}</div>
@@ -101,9 +101,19 @@ function renderBooks() {
 function removeFromLibrary(e) {
     e.stopPropagation(); 
     // let bookDiv = e.target.parentElement.parentElement.parentElement.parentElement.parentElement; // not ideal... but it works
-    let bookDiv = e.target.closest('.book'); 
-    console.log(bookDiv); 
-    console.log(myLibrary[bookDiv.dataset.id]); 
+    let deletedBookDiv = e.target.closest('.book'); 
+    // console.log(bookDiv); 
+    // console.log(myLibrary[bookDiv.dataset.id]); 
+
+    // remove the book that was clicked on from myLibrary
+       myLibrary = myLibrary.filter(bookObj => { //
+            console.log(bookObj); 
+            // return myLibrary.findIndex() !== deletedBookDiv.dataset.id; 
+            return bookObj !== myLibrary[deletedBookDiv.dataset.id]; 
+       })
+
+    // reindex/rerender the DOM
+    renderBooks(); 
 }
 
 addBookToLibrary.addEventListener('click', (e) => {

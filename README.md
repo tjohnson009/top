@@ -1,2 +1,2 @@
 # top
-Repository of simple projects while completing The Odin Project. 
+Repository of projects while completing The Odin Project. 

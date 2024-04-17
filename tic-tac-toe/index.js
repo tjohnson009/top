@@ -1,16 +1,16 @@
-function Gameboard() {
+function Gameboard() { // state of the game board
     const board = []; 
     // const board = [0,0,0,0,0,0,0,0,0]; 
 
     for (let i = 0; i < 9; i++) {
-        board[i].push(Spot()); // 9 spots for tic-tac-toe
+        board[i].push(Spot()); // 9 spots for tic-tac-toe - array of spot objects
     }
 
     const getBoard = () => {
         return board; 
     }
 
-    const receiveMarker = (spot, player) => {
+    const receiveMarker = (spot, player) => { // checks if the move is valid
         const openSpots = board.filter(spot => {
             return spot.getValue() === 0; 
         })
@@ -19,35 +19,41 @@ function Gameboard() {
             console.log('Game over'); 
             return; 
         } else {
-            spot.addValue(player.marker); 
+            if (openSpots.includes(spot)) {
+                spot.addValue(player.marker); 
+            } else {
+                console.log(`That spot is not open.`); 
+            }
         }
     }
 
-    const renderBoard = () => {
-
+    const logBoard = () => { // console.log the board before UI implementation
+        const boardWithValues = board.map(spot => spot.getValue()); 
+        console.log(boardWithValues); 
     }
 
     return {
-        getBoard, receiveMarker, renderBoard
+        getBoard, receiveMarker, logBoard
     }
 }
 
-function Spot() {
-    let value = 0; 
+function Spot() {  
+    let value = 0; // 0 for empty, 1 for playerOne, 2 for playerTwo
 
-    const addValue = (playerMarker) => { // changing the value of a spot in the board array
-        value = playerMarker; 
+    const changeValue = (playerMarker) => { // changing the value of a spot
+        if (value !== 1 && value !== 2) {
+            value = playerMarker; 
+        } else {
+            console.log('That spot is not open.'); 
+        }
     }
 
     const getValue = () => {
         return value; 
     }
 
-    // const displayValue = () => {
-    // }
-
     return {
-        addValue, getValue
+        changeValue, getValue
     }
 }
 
@@ -79,8 +85,19 @@ function GameControl(playerOneName = 'Player One', playerTwoName = "Player Two")
 
     }
 
-    const playRound =  (spot) => {
-        spot.addValue(whoseTurn.marker); 
+    const playRound =  (spot) => { // spot is a number from 0 - 9
+        board[spot].changeValue(whoseTurn.marker); 
+        board.receiveMarker(board[spot], whoseTurn); 
+        board.logBoard(); 
+        switchTurns(); 
     }
 
+    const checkForWin = () => {
+        // start checking at 5 spots filled in the array because it's not possible to have a winner before that
+        const possibleWins = []; 
+    }
+
+    return {
+
+    }
 }

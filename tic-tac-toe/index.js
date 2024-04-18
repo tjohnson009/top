@@ -85,7 +85,14 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
     }
 
     const restartGame = () => {
+        // reset all the spots on the gameboard
+        board.getBoard().forEach(spotObj => {
+            spotObj.changeValue(0); 
+        })
 
+        // set active player to player 1
+        activePlayer = players[0]; 
+        console.log(`Game restarted. ${getWhoseTurn().name}'s move.`); 
     }
 
     const playRound = (spotNumber) => { // spot is a number from 0 - 9
@@ -177,7 +184,7 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
     } 
 
     return {
-        checkForWin, getWhoseTurn, switchTurns, playRound, checkForTie, gameOver
+        checkForWin, getWhoseTurn, switchTurns, playRound, checkForTie, gameOver, restartGame
     }
 }
 

@@ -66,6 +66,7 @@ function Spot() {
 function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
 
     const board = Gameboard(); 
+    // let nonZeroSpots = board.getBoard().filter(spot => (spot.getValue() !== 0));
     const players = [
         {
             name: playerOneName, 
@@ -81,6 +82,7 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
 
     const switchTurns = () => {
         activePlayer = activePlayer === players[0] ? players[1] : players[0]; 
+        // return `It's ${activePlayer.name}'s turn.`; 
     }
 
     const getWhoseTurn = () => {
@@ -99,15 +101,19 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
                 board.receiveMarker(board[spotNumber], activePlayer); 
                 board.logBoard(); 
                 switchTurns(); 
-                checkForWin(); 
+                console.log(`It is ${getWhoseTurn().name}'s turn now.`); 
+                return checkForWin(); 
             } else {                
                 console.log('That spot is not open or invalid.'); 
-                switchTurns(); // resets the players turn to try again
+                // switchTurns(); // resets the players turn to try again
+                return `It is ${getWhoseTurn().name}'s turn. `; 
         }
+
     }
 
     const checkForWin = () => {
         let nonZeroSpots = board.getBoard().filter(spot => (spot.getValue() !== 0)); 
+    if (!checkForTie()) {
         if (nonZeroSpots.length >= 5) { // start checking for wins once 5 spots are filled - the lowest possible number
             console.log('Checking for win'); 
         // let whoWentFirst = whoseTurn; 
@@ -120,24 +126,38 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
         [2, 5, 8],
         [3, 4, 5],
         [6, 7, 8]
-    ]; 
+        ]; 
             // take the spots on the board and check them against the possible wins - for loop because cannot break forEach
         for (let i = 0; i < possibleWins.length; i++) { // for every possible win
-            // for(let j = 0; j < possibleWins[i].length; j++) {
-            if (possibleWins[i].every(spot => board[spot].getValue() === 1)) { // playerOne occupies every spot in possible win combo
-                console.log('Player One wins'); 
-                break; 
-            } else if (possibleWins[i].every(spot => board[spot].getValue() === 2)) { // playerTwo occupies every spot in possible win combo
-                console.log('Player Two wins');
-                break; 
+            if (possibleWins[i].every(spot => board.getBoard()[spot].getValue() === 1)) { // playerOne occupies every spot in possible win combo
+                console.log('Player 1 wins'); 
+                // break; 
+                return 1; 
+            } else if (possibleWins[i].every(spot => board.getBoard()[spot].getValue() === 2)) { // playerTwo occupies every spot in possible win combo
+                console.log('Player 2 wins');
+                // break; 
+                return 2; 
+                }
             }
-            // }
-        }
+            return `No winner yet`
+        } else {
+            return `No win check yet.`
         } 
+    } else {
+        return `Tie game`
     }
+}
+
+    const checkForTie = () => {
+        let nonZeroSpots = board.getBoard().filter(spot => (spot.getValue() !== 0)); 
+        if (nonZeroSpots.length === 9) {
+            return true; 
+    }
+    return false; // default is no tie
+}
 
     return {
-        checkForWin, getWhoseTurn, switchTurns, playRound
+        checkForWin, getWhoseTurn, switchTurns, playRound, checkForTie
     }
 }
 

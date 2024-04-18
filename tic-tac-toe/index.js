@@ -46,12 +46,7 @@ function Spot() {
     let value = 0; // 0 for empty, 1 for playerOne, 2 for playerTwo
 
     const changeValue = (playerMarker) => { // changing the value of a spot
-        if (value !== 1 && value !== 2) {
             value = playerMarker; 
-        } else {
-            console.log('That spot is not open.'); 
-            return 'switch turns'; 
-        }
     }
 
     const getValue = () => {
@@ -103,7 +98,8 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
                 board.logBoard(); 
                 switchTurns(); 
                 console.log(`It is ${getWhoseTurn().name}'s turn now.`); 
-                return checkForWin(); 
+                let result = checkForWin(); 
+                return gameOver(result); 
                 }
             } else {                
                 console.log('That spot is not open or invalid.'); 
@@ -163,16 +159,25 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
     return false; // default is no tie
 }
 
-    const gameOver = () => {
-        // reset the value of all the spots
-
-        // set whoseTurn variable to allow O to go first for the next round
-
-        // 
+    const gameOver = (result) => {
+        if (result === 1 || result === 2 || result === 3) {
+            // prompt the user to play again
+            let replay = prompt(`Play again? Click cancel if not.`); 
+            if (replay) {
+                // reset the value of all the spots
+                board.getBoard().forEach(spotObj => {
+                    spotObj.changeValue(0); 
+                })
+                // set whoseTurn variable to allow O to go first for the next round
+                switchTurns(); 
+            } else {
+                console.log(`GAME OVER`); 
+            }
+        } 
     } 
 
     return {
-        checkForWin, getWhoseTurn, switchTurns, playRound, checkForTie
+        checkForWin, getWhoseTurn, switchTurns, playRound, checkForTie, gameOver
     }
 }
 

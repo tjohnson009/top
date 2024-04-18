@@ -94,6 +94,7 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
     }
 
     const playRound = (spotNumber) => { // spot is a number from 0 - 9
+        if (spotNumber <= 9 && spotNumber >= 0) {
         if (board.getBoard()[spotNumber].getValue() === 0) { // forces selection to only open spots
             console.log(`${getWhoseTurn().name} chose spot ${spotNumber}.`);  // no semi colon here breaks the app
                 // board.logBoard(); 
@@ -103,17 +104,18 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
                 switchTurns(); 
                 console.log(`It is ${getWhoseTurn().name}'s turn now.`); 
                 return checkForWin(); 
+                }
             } else {                
                 console.log('That spot is not open or invalid.'); 
                 // switchTurns(); // resets the players turn to try again
-                return `It is ${getWhoseTurn().name}'s turn. `; 
+                return `It is ${getWhoseTurn().name}'s turn.`; 
         }
 
     }
 
     const checkForWin = () => {
         let nonZeroSpots = board.getBoard().filter(spot => (spot.getValue() !== 0)); 
-    if (!checkForTie()) {
+    // if (!checkForTie()) {
         if (nonZeroSpots.length >= 5) { // start checking for wins once 5 spots are filled - the lowest possible number
             console.log('Checking for win'); 
         // let whoWentFirst = whoseTurn; 
@@ -138,14 +140,19 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
                 // break; 
                 return 2; 
                 }
+            } 
+
+            if (checkForTie()) {
+                console.log('Tie game'); 
+                return 3; 
             }
-            return `No winner yet`
-        } else {
-            return `No win check yet.`
+
+            console.log('No winner yet'); 
+            return 0; 
         } 
-    } else {
-        return `Tie game`
-    }
+        // else {
+        //     return `No win checking yet.`
+        // } 
 }
 
     const checkForTie = () => {
@@ -155,6 +162,14 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
     }
     return false; // default is no tie
 }
+
+    const gameOver = () => {
+        // reset the value of all the spots
+
+        // set whoseTurn variable to allow O to go first for the next round
+
+        // 
+    } 
 
     return {
         checkForWin, getWhoseTurn, switchTurns, playRound, checkForTie

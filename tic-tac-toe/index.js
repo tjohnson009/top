@@ -168,20 +168,22 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
     }
 
     const gameOver = (result) => {
-        if (result === 1 || result === 2 || result === 3) {
-            // prompt the user to play again
-            let replay = prompt(`Play again? Click cancel if not.`); 
-            if (replay) {
-                // reset the value of all the spots
-                board.getBoard().forEach(spotObj => {
-                    spotObj.changeValue(0); 
-                })
-                // set whoseTurn variable to allow O to go first for the next round
-                switchTurns(); 
-            } else {
-                console.log(`GAME OVER`); 
-            }
-        } 
+        setTimeout(() => { // delay so the last move shows up on the DOM
+            if (result === 1 || result === 2 || result === 3) {
+                // prompt the user to play again
+                let replay = prompt(`Play again? Click cancel if not.`); 
+                if (replay) {
+                    // reset the value of all the spots
+                    board.getBoard().forEach(spotObj => {
+                        spotObj.changeValue(0); 
+                    })
+                    // set whoseTurn variable to allow O to go first for the next round
+                    switchTurns(); 
+                } else {
+                    console.log(`GAME OVER`); 
+                }
+            } 
+        }, 1000); 
     } 
 
     return {
@@ -198,24 +200,35 @@ function DOMControl() { // render x and o when a player selects a spot
     }; 
 
 
-    let boardValues = game.getBoard().map(spot => spot.getValue());
-    const renderBoard = () => {
-        console.log(DOMElements.allSpotDivs); 
+    const updateGameboard = () => {
+        let boardValues = game.getBoard().map(spot => spot.getValue());
+        console.log(boardValues); 
+        // console.log(DOMElements.allSpotDivs); 
         // for each spot - get value
         DOMElements.allSpotDivs.forEach(div => {
             let id = div.dataset.id; 
 
         // check spot with corresponding id
             let spotValue = boardValues[id]; 
-            div.innerHTML = (spotValue === 1 ? `X` : spotValue === 2 ? `O` : ``); 
+            // div.innerHTML = spotValue === 1 ? `X` : spotValue === 2 ? `O` : ``; 
+            if (spotValue === 1) {
+                div.innerHTML = `X`; 
+            } else if (spotValue === 2) {
+                div.innerHTML = `O`; 
+            } else {
+                div.innerHTML = ``; 
+            }
+            // console.log(boardValues); 
         })
     }
+
     DOMElements.gameboard.addEventListener('click', e => {
         console.log(e.target); 
-        
+        game.playRound(parseInt(e.target.dataset.id)); 
+        updateGameboard(); 
     }); 
 
-    renderBoard(); 
+    updateGameboard(); 
 
 }
 

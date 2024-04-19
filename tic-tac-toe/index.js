@@ -60,7 +60,7 @@ function Spot() {
 
 function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
 
-    const board = Gameboard(); 
+    const board = Gameboard(); // creating and returning the gameboard
     // let nonZeroSpots = board.getBoard().filter(spot => (spot.getValue() !== 0));
     const players = [
         {
@@ -153,9 +153,6 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
             console.log('No winner yet'); 
             return 0; 
         } 
-        // else {
-        //     return `No win checking yet.`
-        // } 
 }
 
     const checkForTie = () => {
@@ -165,6 +162,10 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
     }
     return false; // default is no tie
 }
+
+    const getBoard = () => {
+        return board.getBoard();
+    }
 
     const gameOver = (result) => {
         if (result === 1 || result === 2 || result === 3) {
@@ -184,8 +185,38 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
     } 
 
     return {
-        checkForWin, getWhoseTurn, switchTurns, playRound, checkForTie, gameOver, restartGame
+        checkForWin, getWhoseTurn, getBoard, switchTurns, playRound, checkForTie, gameOver, restartGame
     }
 }
 
-const game = GameControl(); 
+function DOMControl() { // render x and o when a player selects a spot
+    const game = GameControl(); 
+    const DOMElements = {
+        gameboard: document.querySelector('.gameboard'), 
+        allSpotDivs: Array.from(document.querySelectorAll('.spot')), 
+
+    }; 
+
+
+    let boardValues = game.getBoard().map(spot => spot.getValue());
+    const renderBoard = () => {
+        console.log(DOMElements.allSpotDivs); 
+        // for each spot - get value
+        DOMElements.allSpotDivs.forEach(div => {
+            let id = div.dataset.id; 
+
+        // check spot with corresponding id
+            let spotValue = boardValues[id]; 
+            div.innerHTML = (spotValue === 1 ? `X` : spotValue === 2 ? `O` : ``); 
+        })
+    }
+    DOMElements.gameboard.addEventListener('click', e => {
+        console.log(e.target); 
+        
+    }); 
+
+    renderBoard(); 
+
+}
+
+DOMControl(); 

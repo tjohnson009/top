@@ -179,6 +179,7 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
                     })
                     // set whoseTurn variable to allow O to go first for the next round
                     switchTurns(); 
+                    console.log('New Game'); 
                 } else {
                     console.log(`GAME OVER`); 
                 }
@@ -224,11 +225,11 @@ function DOMControl() { // render x and o when a player selects a spot
 
     DOMElements.gameboard.addEventListener('click', e => {
         console.log(e.target); 
-        game.playRound(parseInt(e.target.dataset.id)); 
+        game.playRound(parseInt(e.target.dataset.id)); // calls game  based on return
         updateGameboard(); 
     }); 
 
-    updateGameboard(); 
+    // updateGameboard(); 
 
 }
 

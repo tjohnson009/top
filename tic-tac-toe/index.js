@@ -177,18 +177,30 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
     const gameOver = (result) => {
         // let boardValues = board.getBoard().map(spot => spot.getValue());
         const gameOverEvent = new CustomEvent('gameOver'); 
+        const playerOneWins = new CustomEvent('player1'); 
+        const playerTwoWins = new CustomEvent('player2'); 
+        const tieGame = new CustomEvent('tie'); 
          setTimeout(() => { // delay for the last move to render to the gameBoard
             if (result === 1 || result === 2 || result === 3) { // only fires if there is a winner or a tie
 
                 // prompt the user to play again
-                let replay = prompt(`${result === 1 ? players[0].name + ' wins!': result === 2 ? players[1].name + ' wins!' : "It's a tie game. "} Play again? Click cancel if not.`); // dialog
+                let replay = null; 
+                replay = `${result === 1 ? players[0].name + ' wins!': result === 2 ? players[1].name + ' wins!' : "It's a tie game. "}`; // dialog
                 
                 if (replay) {
+                    if (result === 1 ) {
+                        document.dispatchEvent(playerOneWins); 
+                        // document.dispatchEvent(playerOneWins); 
+                    } else if (result === 2) {
+                        document.dispatchEvent(playerTwoWins); 
+                    } else if (result === 3) {
+                        document.dispatchEvent(tieGame); 
+                    }
                     document.dispatchEvent(gameOverEvent); 
-                    console.log('New Game'); 
-                    console.log(`It is ${getWhoseTurn().name}'s turn.`); 
+                    // console.log('New Game'); 
+                    // console.log(`It is ${getWhoseTurn().name}'s turn.`); 
                 } else {
-                    document.dispatchEvent(gameOverEvent); 
+                    document.dispatchEvent(gameOverEvent, result); 
                     console.log(`GAME OVER`); 
                 }
             } 
@@ -207,7 +219,9 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
         allSpotDivs: Array.from(document.querySelectorAll('.spot')), 
         restart: document.querySelector('#restart'), 
         playerOneName: document.querySelector('#player-one'), // input
-        playerTwoName: document.querySelector('#player-two')
+        playerTwoName: document.querySelector('#player-two'), 
+        display: document.querySelector('#turn'), // innerHTML
+        dialog: document.querySelector('#dialog')
     }; 
     
     const game = GameControl(DOMElements.playerOneName.value, DOMElements.playerTwoName.value); 
@@ -215,16 +229,17 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
     DOMElements.playerOneName.addEventListener('change', (e) => { // update player one name
         game.updatePlayerName(0, e.target.value); 
         DOMElements.playerOneName.value = e.target.value;
-        console.log(`P1 Name: ${DOMElements.playerOneName.value}`); 
+        console.log(`P1 Name: ${DOMElements.playerOneName.value}`);  
+        updateDOM(); 
     }); 
     DOMElements.playerTwoName.addEventListener('change', (e) => { // update player one name
         game.updatePlayerName(1, e.target.value); 
         DOMElements.playerTwoName.value = e.target.value;
         console.log(`P1 Name: ${DOMElements.playerTwoName.value}`); 
+        updateDOM(); 
     }); 
-
     
-    const updateDOMGameboard = () => {
+    const updateDOM = () => {
         let boardValues = game.getBoard().map(spot => spot.getValue());
         // game.logBoard()
         // console.log(DOMElements.allSpotDivs); 
@@ -244,29 +259,40 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
                 div.innerHTML = ``; 
             }
             // console.log(boardValues); 
-        })
+        }); 
+
+            let turn = game.getWhoseTurn().name; 
+            DOMElements.display.innerHTML = `It's ${turn}'s turn!`; 
     }
 
     DOMElements.gameboard.addEventListener('click', (e) => {
         // console.log(e.target); 
-        let result = game.playRound(parseInt(e.target.dataset.id)); // returns gameOver based on return value]
-        updateDOMGameboard(); 
+        game.playRound(parseInt(e.target.dataset.id)); // returns gameOver based on return value]
+        updateDOM(); 
     }); 
 
     document.addEventListener('gameOver', (e) => {
+        // DOMElements.display.innerHTML = `${game.switchTurns(), game.getWhoseTurn().name} wins!`; 
+        DOMElements.dialog.showModal(); 
         // game.restartGame(); 
         game.getBoard().forEach(spotObj => {
             spotObj.changeValue(0); 
         }); 
         // game.switchTurns(); 
-        updateDOMGameboard(); 
+        updateDOM(); 
+    })
+    document.addEventListener('playerOneWins', (e) => {
+        DOMElements.display.innerHTML = `${game.switchTurns(), game.getWhoseTurn().name} wins!`; 
+    })
+    document.addEventListener('playerTwoWins', (e) => {
+        DOMElements.display.innerHTML = `${game.switchTurns(), game.getWhoseTurn().name} wins!`; 
+    })
+    document.addEventListener('tieGame', (e) => {
+        DOMElements.display.innerHTML = `It's a tie!`; 
     })
 
     DOMElements.restart.addEventListener('click', (e) => {
         game.restartGame(); 
-        updateDOMGameboard(); 
+        updateDOM(); 
     })
-
-    // updateGameboard(); 
-
 })(); 

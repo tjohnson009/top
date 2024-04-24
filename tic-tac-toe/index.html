@@ -9,6 +9,15 @@
 <body>
     <div class="container">
         <div class="title"><p>Tic-Tac-Toe</p></div>
+        <dialog id="dialog">
+            <div>
+                <p>This is the dialog</p>
+            </div>
+            <div class="buttons">
+                <button id="#replay"></button>
+                <button id="cancel"></button>
+            </div>
+        </dialog>
         <div class="gameboard">
             <div data-id=0 class="spot top left"></div>
             <div data-id=1 class="spot top"></div>
@@ -22,8 +31,16 @@
         </div>
         <div class="options">
             <div class="inputs">
-                <label for="player-one">Player 1 Name: </label><input id='player-one' type="text">
-                <label for="player-two">Player 2 Name: </label><input id='player-two' type="text">
+                <p>Change Name Of Players Below</p>
+                <div>
+                    <label for="player-one" placeholder="Player 1">X: </label><input id='player-one' value="Player 1" type="text">
+                </div>
+                <div>
+                    <label for="player-two" placeholder="Player 2">O: </label><input id='player-two' value="Player 2"type="text">
+                </div>
+            </div>
+            <div class="display">
+                <p id="turn">It's Player 1's turn!</p>
             </div>
         </div>
         <div class="controls">

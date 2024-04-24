@@ -6,6 +6,12 @@
 
 :root {
     font-size: 10px; 
+    --cool-blue: #2596be; 
+
+    dialog {
+        background-color: white; 
+        font-size: 3rem; 
+    }
 }
 
 .container {
@@ -18,9 +24,11 @@
     
     .title {
         grid-area: 1/1/2/3;
-        border: 1px solid red;
+        /* border: 1px solid red; */
         padding: 1rem 0; 
         font-size: 5rem; 
+        margin: 0 auto; 
+
     }
     
     .gameboard {
@@ -64,6 +72,25 @@
     .options {
         display: grid; 
         grid-area: 2/2/3/3;
+        margin: 0 auto; 
+        font-size: 4rem; 
+        background-color: var(--cool-blue); 
+        width: 80%; 
+        height: 100%; 
+        /* margin-right: 10rem;  */
+        border-radius: 2rem;
+
+        .inputs {
+            display: grid; 
+            align-items: center;
+            justify-items: center;
+            /* border: 1px solid red;  */
+            /* margin-right: 2rem;  */
+        }
+
+        .display {
+            margin: 0 auto; 
+        }
     }
 
     .controls {

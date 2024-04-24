@@ -88,7 +88,7 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
         // reset all the spots on the gameboard to 0
         board.getBoard().forEach(spotObj => {
             spotObj.changeValue(0); 
-        })
+        }); 
 
         // set active player to player 1
         activePlayer = players[0]; 
@@ -237,8 +237,11 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
     }); 
 
     document.addEventListener('gameOver', (e) => {
-        game.restartGame(); 
-        game.switchTurns(); 
+        // game.restartGame(); 
+        game.getBoard().forEach(spotObj => {
+            spotObj.changeValue(0); 
+        }); 
+        // game.switchTurns(); 
         updateDOMGameboard(); 
     })
 

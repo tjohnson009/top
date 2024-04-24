@@ -73,6 +73,11 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
         }
     ]; 
 
+    const updatePlayerName = (player, newName) => {
+        // return (players[player]).name = newName; 
+        return (players[player])["name"] = newName; 
+    }
+
     let activePlayer = players[0];  // player object
 
     const switchTurns = () => {
@@ -176,7 +181,7 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
             if (result === 1 || result === 2 || result === 3) { // only fires if there is a winner or a tie
 
                 // prompt the user to play again
-                let replay = prompt(`${result === 1 ? playerOneName + ' wins!': result === 2 ? playerTwoName + ' wins!' : "It's a tie game. "} Play again? Click cancel if not.`); // dialog
+                let replay = prompt(`${result === 1 ? players[0].name + ' wins!': result === 2 ? players[1].name + ' wins!' : "It's a tie game. "} Play again? Click cancel if not.`); // dialog
                 
                 if (replay) {
                     document.dispatchEvent(gameOverEvent); 
@@ -188,25 +193,37 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
                 }
             } 
         }, 100); 
-        // need gameboard to update here
-        // return new Promise((resolve, reject) => {
-        //     resolve(); 
-        // }); 
+
         } 
 
     return {
-        checkForWin, getWhoseTurn, getBoard, switchTurns, playRound, checkForTie, gameOver, restartGame
+        checkForWin, getWhoseTurn, getBoard, switchTurns, playRound, checkForTie, gameOver, restartGame, updatePlayerName
     }
 }
 
 (function DOMControl() { // render x and o when a player selects a spot
-    const game = GameControl(); 
     const DOMElements = {
         gameboard: document.querySelector('.gameboard'), 
         allSpotDivs: Array.from(document.querySelectorAll('.spot')), 
-        restart: document.querySelector('#restart')
+        restart: document.querySelector('#restart'), 
+        playerOneName: document.querySelector('#player-one'), // input
+        playerTwoName: document.querySelector('#player-two')
     }; 
+    
+    const game = GameControl(DOMElements.playerOneName.value, DOMElements.playerTwoName.value); 
+    
+    DOMElements.playerOneName.addEventListener('change', (e) => { // update player one name
+        game.updatePlayerName(0, e.target.value); 
+        DOMElements.playerOneName.value = e.target.value;
+        console.log(`P1 Name: ${DOMElements.playerOneName.value}`); 
+    }); 
+    DOMElements.playerTwoName.addEventListener('change', (e) => { // update player one name
+        game.updatePlayerName(1, e.target.value); 
+        DOMElements.playerTwoName.value = e.target.value;
+        console.log(`P1 Name: ${DOMElements.playerTwoName.value}`); 
+    }); 
 
+    
     const updateDOMGameboard = () => {
         let boardValues = game.getBoard().map(spot => spot.getValue());
         // game.logBoard()

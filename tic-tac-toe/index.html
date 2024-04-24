@@ -8,6 +8,7 @@
 </head>
 <body>
     <div class="container">
+        <div class="title"><p>Tic-Tac-Toe</p></div>
         <div class="gameboard">
             <div data-id=0 class="spot top left"></div>
             <div data-id=1 class="spot top"></div>
@@ -18,7 +19,12 @@
             <div data-id=6 class="spot bottom left"></div>
             <div data-id=7 class="spot bottom"></div>
             <div data-id=8 class="spot bottom right"></div>
-
+        </div>
+        <div class="options">
+            <div class="inputs">
+                <label for="player-one">Player 1 Name: </label><input id='player-one' type="text">
+                <label for="player-two">Player 2 Name: </label><input id='player-two' type="text">
+            </div>
         </div>
         <div class="controls">
             <button id="restart">Restart Game</button>

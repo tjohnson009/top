@@ -13,11 +13,18 @@
     /* border: 1px solid red;  */
     background-color:lightcyan; 
     display: grid; 
-    grid-template-rows: .5fr 4fr 1fr; 
+    grid-template-rows: minmax(75px, .5fr) 4fr 1fr; 
+    grid-template-columns: 3fr 2fr; 
     
+    .title {
+        grid-area: 1/1/2/3;
+        border: 1px solid red;
+        padding: 1rem 0; 
+        font-size: 5rem; 
+    }
     
     .gameboard {
-        grid-area: 2/1/3/1;
+        grid-area: 2/1/3/2;
         display: grid; 
         grid-template-columns: repeat(3, 1fr);
         grid-template-rows: repeat(3, 1fr); 
@@ -52,6 +59,11 @@
         .bottom {
             border-bottom: none; 
         }
+    }
+
+    .options {
+        display: grid; 
+        grid-area: 2/2/3/3;
     }
 
     .controls {

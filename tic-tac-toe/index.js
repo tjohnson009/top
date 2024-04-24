@@ -85,7 +85,7 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
     }
 
     const restartGame = () => {
-        // reset all the spots on the gameboard
+        // reset all the spots on the gameboard to 0
         board.getBoard().forEach(spotObj => {
             spotObj.changeValue(0); 
         })
@@ -93,6 +93,8 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
         // set active player to player 1
         activePlayer = players[0]; 
         console.log(`Game restarted. ${getWhoseTurn().name}'s move.`); 
+        // DOMControl(); 
+        // updateGameboard();
     }
 
     const playRound = (spotNumber) => { // spot is a number from 0 - 9
@@ -171,20 +173,24 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
         setTimeout(() => { // delay so the last move shows up on the DOM
             if (result === 1 || result === 2 || result === 3) {
                 // prompt the user to play again
-                let replay = prompt(`Play again? Click cancel if not.`); 
+                let replay = prompt(`${result === 1 ? playerOneName + ' wins!': result === 2 ? playerTwoName + ' wins!' : "It's a tie game. "} Play again? Click cancel if not.`); // dialog
                 if (replay) {
                     // reset the value of all the spots
                     board.getBoard().forEach(spotObj => {
                         spotObj.changeValue(0); 
-                    })
+                    }); 
                     // set whoseTurn variable to allow O to go first for the next round
+                    restartGame(); 
                     switchTurns(); 
+                    // reset the DOM - updateGameboard somehow here
+
+                
                     console.log('New Game'); 
                 } else {
                     console.log(`GAME OVER`); 
                 }
             } 
-        }, 1000); 
+        }, 500); 
     } 
 
     return {
@@ -192,30 +198,31 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
     }
 }
 
-function DOMControl() { // render x and o when a player selects a spot
+(function DOMControl() { // render x and o when a player selects a spot
     const game = GameControl(); 
     const DOMElements = {
         gameboard: document.querySelector('.gameboard'), 
         allSpotDivs: Array.from(document.querySelectorAll('.spot')), 
-
+        restart: document.querySelector('#restart')
     }; 
 
 
-    const updateGameboard = () => {
+    const updateDOMGameboard = () => {
         let boardValues = game.getBoard().map(spot => spot.getValue());
         console.log(boardValues); 
         // console.log(DOMElements.allSpotDivs); 
-        // for each spot - get value
+        // for each spot - get id
         DOMElements.allSpotDivs.forEach(div => {
             let id = div.dataset.id; 
 
         // check spot with corresponding id
             let spotValue = boardValues[id]; 
             // div.innerHTML = spotValue === 1 ? `X` : spotValue === 2 ? `O` : ``; 
+            // translates the value of the cell to the DOM
             if (spotValue === 1) {
-                div.innerHTML = `X`; 
+                div.innerHTML = `X`; // X
             } else if (spotValue === 2) {
-                div.innerHTML = `O`; 
+                div.innerHTML = `O`; // O
             } else {
                 div.innerHTML = ``; 
             }
@@ -225,12 +232,15 @@ function DOMControl() { // render x and o when a player selects a spot
 
     DOMElements.gameboard.addEventListener('click', e => {
         console.log(e.target); 
-        game.playRound(parseInt(e.target.dataset.id)); // calls game  based on return
-        updateGameboard(); 
+        game.playRound(parseInt(e.target.dataset.id)); // calls gameOver based on return value
+        updateDOMGameboard(); 
     }); 
+
+    DOMElements.restart.addEventListener('click', (e) => {
+        game.restartGame(); 
+        updateDOMGameboard(); 
+    })
 
     // updateGameboard(); 
 
-}
-
-DOMControl(); 
+})(); 

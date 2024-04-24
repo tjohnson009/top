@@ -92,9 +92,9 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
 
         // set active player to player 1
         activePlayer = players[0]; 
-        console.log(`Game restarted. ${getWhoseTurn().name}'s move.`); 
-        // DOMControl(); 
-        // updateGameboard();
+        console.log(`Game reset.`); 
+        board.logBoard(); 
+
     }
 
     const playRound = (spotNumber) => { // spot is a number from 0 - 9
@@ -122,7 +122,7 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
         let nonZeroSpots = board.getBoard().filter(spot => (spot.getValue() !== 0)); 
     // if (!checkForTie()) {
         if (nonZeroSpots.length >= 5) { // start checking for wins once 5 spots are filled - the lowest possible number
-            console.log('Checking for win'); 
+            // console.log('Checking for win'); 
         // let whoWentFirst = whoseTurn; 
         const possibleWins = [ // winning combos
         [0, 1, 2],
@@ -170,28 +170,29 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
     }
 
     const gameOver = (result) => {
-        setTimeout(() => { // delay so the last move shows up on the DOM
-            if (result === 1 || result === 2 || result === 3) {
+        // let boardValues = board.getBoard().map(spot => spot.getValue());
+        const gameOverEvent = new CustomEvent('gameOver'); 
+         setTimeout(() => { // delay for the last move to render to the gameBoard
+            if (result === 1 || result === 2 || result === 3) { // only fires if there is a winner or a tie
+
                 // prompt the user to play again
                 let replay = prompt(`${result === 1 ? playerOneName + ' wins!': result === 2 ? playerTwoName + ' wins!' : "It's a tie game. "} Play again? Click cancel if not.`); // dialog
-                if (replay) {
-                    // reset the value of all the spots
-                    board.getBoard().forEach(spotObj => {
-                        spotObj.changeValue(0); 
-                    }); 
-                    // set whoseTurn variable to allow O to go first for the next round
-                    restartGame(); 
-                    switchTurns(); 
-                    // reset the DOM - updateGameboard somehow here
-
                 
+                if (replay) {
+                    document.dispatchEvent(gameOverEvent); 
                     console.log('New Game'); 
+                    console.log(`It is ${getWhoseTurn().name}'s turn.`); 
                 } else {
+                    document.dispatchEvent(gameOverEvent); 
                     console.log(`GAME OVER`); 
                 }
             } 
-        }, 500); 
-    } 
+        }, 100); 
+        // need gameboard to update here
+        // return new Promise((resolve, reject) => {
+        //     resolve(); 
+        // }); 
+        } 
 
     return {
         checkForWin, getWhoseTurn, getBoard, switchTurns, playRound, checkForTie, gameOver, restartGame
@@ -206,10 +207,9 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
         restart: document.querySelector('#restart')
     }; 
 
-
     const updateDOMGameboard = () => {
         let boardValues = game.getBoard().map(spot => spot.getValue());
-        console.log(boardValues); 
+        // game.logBoard()
         // console.log(DOMElements.allSpotDivs); 
         // for each spot - get id
         DOMElements.allSpotDivs.forEach(div => {
@@ -230,11 +230,17 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
         })
     }
 
-    DOMElements.gameboard.addEventListener('click', e => {
-        console.log(e.target); 
-        game.playRound(parseInt(e.target.dataset.id)); // calls gameOver based on return value
+    DOMElements.gameboard.addEventListener('click', (e) => {
+        // console.log(e.target); 
+        let result = game.playRound(parseInt(e.target.dataset.id)); // returns gameOver based on return value]
         updateDOMGameboard(); 
     }); 
+
+    document.addEventListener('gameOver', (e) => {
+        game.restartGame(); 
+        game.switchTurns(); 
+        updateDOMGameboard(); 
+    })
 
     DOMElements.restart.addEventListener('click', (e) => {
         game.restartGame(); 

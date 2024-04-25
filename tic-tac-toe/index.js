@@ -316,8 +316,12 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
         DOMElements.dialog.style.display = 'none'; 
     })
     DOMElements.replay.addEventListener('click', e => {
-        game.restartGame(); 
-        game.switchTurns(); 
+        game.getBoard().forEach(spotObj => {
+            spotObj.changeValue(0); 
+        }); 
+        // game.switchTurns(); 
+        console.log(`Game reset.`); 
+        // game.logBoard(); 
         updateDOM(); 
         DOMElements.dialog.close(); 
         DOMElements.dialog.style.display = 'none'; 

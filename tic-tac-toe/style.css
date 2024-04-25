@@ -8,9 +8,57 @@
     font-size: 10px; 
     --cool-blue: #2596be; 
 
-    dialog {
+    #dialog {
         background-color: white; 
         font-size: 3rem; 
+        margin: 0 auto; 
+        margin-top: 20rem; 
+        width: 60%; 
+        height: 40%; 
+        /* display: grid;  */
+        grid-template-rows: 1fr 1fr; 
+        place-items: center;
+        border-radius: 2rem;
+
+        button {
+                overflow: hidden;
+                padding: 12px 24px;
+                border-radius: 7px;
+                background-color: white;
+                color: black;
+                position: relative;
+                display: inline-block;
+                cursor: pointer;
+            }
+            
+            button span {
+                position: relative;
+                transition: color 0.6s cubic-bezier(0.53, 0.21, 0, 1);
+            }
+            
+            button:before {
+                content: "";
+                display: block;
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: var(--cool-blue);
+                transform: scaleX(0);
+                transform-origin: 100% 100%;
+                transition: transform 0.6s cubic-bezier(0.53, 0.21, 0, 1);
+            }
+            
+            button:hover::before {
+                transform-origin: 0 0;
+                transform: scaleX(1);
+            }
+            
+            button:hover {
+                color: white;
+            }
+        
     }
 }
 
@@ -79,6 +127,7 @@
         height: 100%; 
         /* margin-right: 10rem;  */
         border-radius: 2rem;
+        padding: 2rem; 
 
         .inputs {
             display: grid; 

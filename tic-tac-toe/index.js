@@ -221,7 +221,10 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
         playerOneName: document.querySelector('#player-one'), // input
         playerTwoName: document.querySelector('#player-two'), 
         display: document.querySelector('#turn'), // innerHTML
-        dialog: document.querySelector('#dialog')
+        dialog: document.querySelector('#dialog'), 
+        dialogParagraph: document.querySelector('.dialog'),
+        replay: document.querySelector('#replay'), 
+        quit: document.querySelector('#quit')
     }; 
     
     const game = GameControl(DOMElements.playerOneName.value, DOMElements.playerTwoName.value); 
@@ -274,25 +277,49 @@ function GameControl(playerOneName = 'Player 1', playerTwoName = "Player 2") {
     document.addEventListener('gameOver', (e) => {
         // DOMElements.display.innerHTML = `${game.switchTurns(), game.getWhoseTurn().name} wins!`; 
         DOMElements.dialog.showModal(); 
+        DOMElements.dialog.style.display = 'grid'; 
         // game.restartGame(); 
         game.getBoard().forEach(spotObj => {
             spotObj.changeValue(0); 
         }); 
         // game.switchTurns(); 
         updateDOM(); 
+    }); 
+    document.addEventListener('player1', (e) => {
+        // DOMElements.display.innerHTML = `${game.switchTurns(), game.getWhoseTurn().name} wins!`; 
+        DOMElements.dialogParagraph.innerHTML = `${game.getWhoseTurn().name} wins!`; 
     })
-    document.addEventListener('playerOneWins', (e) => {
-        DOMElements.display.innerHTML = `${game.switchTurns(), game.getWhoseTurn().name} wins!`; 
+    document.addEventListener('player2', (e) => {
+        // DOMElements.display.innerHTML = `${game.switchTurns(), game.getWhoseTurn().name} wins!`; 
+        DOMElements.dialogParagraph.innerHTML = `${game.getWhoseTurn().name} wins!`; 
     })
-    document.addEventListener('playerTwoWins', (e) => {
-        DOMElements.display.innerHTML = `${game.switchTurns(), game.getWhoseTurn().name} wins!`; 
-    })
-    document.addEventListener('tieGame', (e) => {
-        DOMElements.display.innerHTML = `It's a tie!`; 
+    document.addEventListener('tie', (e) => {
+        // DOMElements.display.innerHTML = `It's a tie!`; 
+        DOMElements.dialogParagraph.innerHTML = `It's a tie!`; 
     })
 
     DOMElements.restart.addEventListener('click', (e) => {
         game.restartGame(); 
+        DOMElements.playerOneName.value = 'Player 1';
+        DOMElements.playerTwoName.value = 'Player 2';
         updateDOM(); 
+    })
+
+    DOMElements.quit.addEventListener('click', e => {
+        // clear the game board
+        // clear the names
+        DOMElements.playerOneName.value = '';
+        DOMElements.playerTwoName.value = '';
+        // clear the display
+        DOMElements.display.innerHTML = 'GAME OVER'; 
+        DOMElements.dialog.close(); 
+        DOMElements.dialog.style.display = 'none'; 
+    })
+    DOMElements.replay.addEventListener('click', e => {
+        game.restartGame(); 
+        game.switchTurns(); 
+        updateDOM(); 
+        DOMElements.dialog.close(); 
+        DOMElements.dialog.style.display = 'none'; 
     })
 })(); 

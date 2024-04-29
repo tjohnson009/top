@@ -1,0 +1,17 @@
+{
+  "name": "beckys-bakery",
+  "version": "1.0.0",
+  "description": "\"A website for Becky and all her baking recipes\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1", 
+    "watch": "webpack --watch"
+  },
+  "author": "T. Johnson",
+  "license": "ISC",
+  "devDependencies": {
+    "html-webpack-plugin": "^5.6.0",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

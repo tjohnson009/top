@@ -1,5 +1,6 @@
 // console.log('We are live and in color.'); 
 import about from './about'; 
+import recipes from './recipes'; 
 import './style.css'; 
 // let divCreator = (divName, className) => {
 //     divName = document.createElement('div'); 
@@ -19,7 +20,7 @@ import './style.css';
     const heroImage = new Image(1500); 
     heroImage.src = '../src/img/mae-mu-kID9sxbJ3BQ-unsplash.jpg'; 
     heroImage.alt = 'A basket of baked chocolate chip cookies'; 
-    console.log(heroImage); 
+    // console.log(heroImage); 
     // hero.insertAdjacentElement('beforeend', heroImage); // NOT insertAdjacentHTML because we created an element, not a string representation of an element
     hero.insertAdjacentHTML('beforeend', `<h1>Becky's Bakery</h1>`); 
     hero.insertAdjacentHTML('beforeend', '<h2>A Collection Of Custom-Made Culinary Creations</h2>'); 
@@ -31,7 +32,7 @@ import './style.css';
 // }
     
     let switchTabs = (e) => {
-        console.log(e); 
+        // console.log(e); 
         let children = Array.from(document.querySelector('#content').children); 
         // console.log(children); 
     children.forEach(child => child.remove()); 
@@ -41,11 +42,13 @@ import './style.css';
         contentDiv.appendChild(about()); 
     } else if (e.target.textContent === 'Recipes') {
         contentDiv.appendChild(recipes()); 
-    } else if (e.target.textContent === 'Catering') {
-        contentDiv.appendChild(catering()); 
-    } else if (e.target.textContent === 'Newsletter') {
-        contentDiv.appendChild(newsletter()); 
-    } else {
+    }
+    //  else if (e.target.textContent === 'Catering') {
+    //     contentDiv.appendChild(catering()); 
+    // } else if (e.target.textContent === 'Newsletter') {
+    //     contentDiv.appendChild(newsletter()); 
+    // } 
+    else {
         contentDiv.appendChild(hero); 
         contentDiv.appendChild(heroText); 
     }

@@ -11,7 +11,9 @@
     margin: 0; 
     font-family: 'Schibsted_Grotesk';
     font-size: 10px; 
-    --background-color: #434552; 
+    --background-color: #3c4043; 
+    background-color: #3c4043;
+
 }
 
 header {
@@ -160,28 +162,35 @@ footer {
 
 /* About.JS */
 .container {
-    h1 {
-        font-size: 4rem; 
-    }
+     width: 100%;
+     /* background-color: #3c4043; */
+     color: white;
+     background-color: var(--background-color);
+
 }
 
 .bakerDiv {
     display: grid; 
-    grid-template: 1fr 4fr / 3fr 1fr; 
+    grid-template: .5fr 4fr / 2fr 1fr; 
     width: calc(100% - 15rem); /*7.5rem of padding on each side */
     padding: 0 7.5rem; 
-    margin-bottom: 2rem;
+    /* margin-bottom: 2rem; */
+    line-height: 1.75;
     
     h1 {
         grid-area: 1/1/2/3; 
-        /* font-size: 3rem;  */
+        font-size: 3rem; 
     }
     
     .text {
         grid-area: 2/1/3/2; 
-        font-size: 2.75rem; 
+        font-size: 2rem; 
         /* padding: 0 3rem;  */
         padding-right: 10rem; 
+        
+        p {
+            margin-top: 0;
+        }
     }
 
     .picture-div {
@@ -191,35 +200,39 @@ footer {
             max-width: 100%; 
             box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
             border-radius: 2rem; 
+            /* align-self: center; */
         }
     }
 }
 
 .bakery {
     display: grid; 
-    grid-template: 1fr 5fr / 1fr 3fr; 
+    grid-template: .5fr 5fr / 1fr 2.5fr; 
     width: calc(100% - 15rem); 
     padding: 0 7.5rem; 
-    margin-bottom: 2rem; 
+    /* margin-bottom: 2rem;  */
+    padding-bottom: 2rem; 
 
     h1 {
         grid-area: 1/1/2/3; 
-        /* font-size: 3rem;  */
+        font-size: 3rem; 
         width: 100%; 
         text-align: right;
-        align-self: center;
+        align-self: bottom;
     }
 
     .text {
         grid-area: 2/2/3/3; 
-        font-size: 2.75rem; 
+        font-size: 2rem; 
         padding-left: 10rem; 
         width: calc(100% - 7.5rem); 
-        line-height: 1.5; 
+        line-height: 1.75; 
+        /* margin-top: 1rem; */
         
         p {
             padding-right: 7.5rem; 
             max-width: 100%; 
+            margin-top: 7rem; 
         }
     }
     
@@ -232,3 +245,6 @@ footer {
         }
     }
 }
+
+
+/* recipe.js */

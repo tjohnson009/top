@@ -26,11 +26,13 @@ export default function recipes() {
         div.appendChild(h1); 
 
         let cardContainer = createElement('div', 'cards-container'); 
-        console.log(cardContainer, mealName); // shows in the console what card you're working on
+        // console.log(cardContainer, mealName); // shows in the console what card you're working on
         for (let i = 0; i < 4; i++) { // FOR EACH CARD AKA MEAL create a card div for the container in a loop
             let newCard = createElement('div', 'card'); 
             let cardID = Array.from(cardContainer.children).length + 1; 
+            // console.log(cardID); 
             newCard.dataset.id = parseInt(cardID); 
+            // console.log(newCard); 
             
             let cardInfo = createElement('div', 'card-info'); 
             let img = createElement('div', 'image');
@@ -38,28 +40,28 @@ export default function recipes() {
             newCard.appendChild(cardInfo); 
             newCard.appendChild(img); 
             newCard.appendChild(instructions); 
-
+            
             let paragraphs = ['name', 'creator', 'completion-time', 'difficulty']; 
             paragraphs.forEach(el => { // create the paragraph elements to fill later from the imported function
                 let paragraph = createElement('p', el); // el == className
                 cardInfo.appendChild(paragraph); 
             }); 
-
+            
             // run the function to fill the card with the appropriate data based on cardID - fillCard
             // console.log(recipeData); // successful - object of all recipedata
             // for (let meal in recipeData[mealName].meals) {   
-            //     fillCard(recipeData[mealName].meals[meal]); 
-            // }
-            for (let meal in recipeData[mealName].meals) {   
-                // console.log(meal); // 1,2,3,4
-                // cardID to match the propName on meals
-                if (parseInt(cardID) === parseInt(meal)) {
-                    fillCard(recipeData[mealName].meals[meal]); 
+                //     fillCard(recipeData[mealName].meals[meal]); 
+                // }
+                for (let meal in recipeData[mealName].meals) {   
+                    // console.log(meal); // 1,2,3,4
+                    // cardID to match the propName on meals
+                    if (parseInt(cardID) === parseInt(meal)) {
+                        setTimeout(() => {fillCard(mealName, recipeData[mealName].meals[meal], cardID)}, 150); // populate the card with the appropriate data
+                    }
                 }
-            }
-
-            // append the card to the container
-            cardContainer.appendChild(newCard); 
+                
+                // append the card to the container
+                cardContainer.appendChild(newCard); 
         }
 
         div.appendChild(cardContainer); 

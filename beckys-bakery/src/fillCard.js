@@ -25,6 +25,6 @@ export default function fillCard(mealName, obj, cardID) {
         }
     }
     // image.innerHTML = obj['image']; 
-    image.innerHTML = `<img src='${obj['image']}' id='${obj['imgLink']}'>`; 
+    image.innerHTML = `<img src='${obj['image']}' id='${obj['imgLink']}' class='recipe-img'>`; 
     instructions.innerHTML = obj.instructions; 
 }

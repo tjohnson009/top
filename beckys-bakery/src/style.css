@@ -140,7 +140,7 @@ nav {
 
 .hero-text {
     margin: 4rem auto; 
-    width: calc(100vw - 55rem); 
+    width: calc(100vw - 30%); 
 
     p {
         font-size: 2rem; 
@@ -248,3 +248,47 @@ footer {
 
 
 /* recipe.js */
+.meal-div {
+
+}
+
+.meal-header {
+    padding: 2rem; 
+    /* margin: 0 auto;  */
+    justify-self: center;
+    margin: 0 auto; 
+    text-align: center; 
+}
+
+.cards-container {
+    display: grid; 
+    grid-template-columns: 1fr;
+    padding: 0 5rem; 
+
+    .card {
+        /* border: 1px solid red;  */
+        display: grid; 
+
+        .card-info {
+
+            p {
+
+            }
+
+        }
+
+        
+        .image {
+            width: 100%; 
+            
+            img {
+                width: 100%; 
+            }
+        }
+        
+        .instructions {
+            
+        }
+        
+    }
+}

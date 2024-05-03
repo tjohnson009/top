@@ -1,5 +1,5 @@
 export default function fillCard(obj) {
-    console.log(obj); 
+    console.log(obj); // successful
     // find the div with the same name as the obj
     // let node = 
     // find the nearest child that has the class of card info

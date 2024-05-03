@@ -2,7 +2,7 @@ class Meal { // returns a meal object - to be given to fillCard
     constructor(name, creator, completionTime, difficulty, instructions) {
         this.name = name; 
         this.creator = creator; 
-        this.completionTime = completionTime; 
+        this['completion-time'] = completionTime; 
         this.difficulty = difficulty; 
         this.instructions = instructions; 
         this.image = ''; 
@@ -46,11 +46,11 @@ let breakfastItems = [
     '8 hours', 
     'Easy',
     `<ul> <li>Mix oats, milk, yogurt, and desired toppings</li> <li>Cover and refrigerate overnight</li> <li>Stir and enjoy in the morning</li> <li>Top with fresh fruit or nuts</li> </ul>`), 
-    new Meal('Overnight Oats',
+    new Meal('Avocado Toast',
     'Becky J', 
-    '8 hours', 
+    '10 minutes', 
     'Easy',
-    `<ul> <li>Mix oats, milk, yogurt, and desired toppings</li> <li>Cover and refrigerate overnight</li> <li>Stir and enjoy in the morning</li> <li>Top with fresh fruit or nuts</li> </ul>`), 
+    `<ul> <li>Prepare pie crust</li> <li>Cook bacon and onions</li> <li>Mix eggs, cream, and cheese</li> <li>Pour egg mixture into crust and bake</li> </ul>`), 
 
 ]
 
@@ -66,14 +66,14 @@ let breakfast = new MealGroup('breakfast'); // same as div name
 let lunch = new MealGroup('lunch'); 
 let dinner = new MealGroup('dinner');  
 let dessert = new MealGroup('dessert') 
-let drink = new MealGroup('drink'); 
+let drinks = new MealGroup('drinks'); 
 
 let recipeData = {
     breakfast, 
     lunch, 
     dinner, 
     dessert, 
-    drink
+    drinks
 }; 
 
 export { recipeData }; // same name as div on main page

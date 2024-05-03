@@ -1,6 +1,6 @@
 export default function fillCard(mealName, obj, cardID) {
     // console.log(mealName); 
-    // console.log(obj); // successful
+    console.log(obj); // successful
     // find the div with the same name as the main meal block on the page
     let placementDiv = document.querySelector(`.${mealName}`); 
     // console.log(placementDiv); 
@@ -24,6 +24,7 @@ export default function fillCard(mealName, obj, cardID) {
             }
         }
     }
-    image.innerHTML = obj['image']; 
+    // image.innerHTML = obj['image']; 
+    image.innerHTML = `<img src='${obj['image']}' id='${obj['imgLink']}'>`; 
     instructions.innerHTML = obj.instructions; 
 }

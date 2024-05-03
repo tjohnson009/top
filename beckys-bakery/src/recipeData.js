@@ -5,7 +5,8 @@ class Meal { // returns a meal object - to be given to fillCard
         this['completion-time'] = completionTime;
         this.difficulty = difficulty;
         this.instructions = instructions;
-        this.image = this.name + ' IMG'; // TEMPORARY
+        this.imgLink = name.split(' ').join(''); 
+        this.image = `../src/img/${this.imgLink}.jpg`; // TEMPORARY
     }
 }
 

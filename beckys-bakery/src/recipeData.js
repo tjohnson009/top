@@ -51,7 +51,13 @@ let breakfastItems = [
         'Becky J',
         '10 minutes',
         'Easy',
-        `<h3>Instructions: </h3><ul> <li>Prepare pie crust</li> <li>Cook bacon and onions</li> <li>Mix eggs, cream, and cheese</li> <li>Pour egg mixture into crust and bake</li> </ul>`),
+        `<h3>Instructions:</h3>
+        <ul>
+          <li>Toast bread slices until golden brown</li>
+          <li>Cut avocado in half and remove pit</li>
+          <li>Scoop out avocado flesh and mash with a fork</li>
+          <li>Spread mashed avocado onto toasted bread</li>
+        </ul>`),
 ];
 
 

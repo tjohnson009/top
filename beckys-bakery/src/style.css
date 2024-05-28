@@ -330,7 +330,7 @@ display: grid;
             }
 
             #BlueberryMuffins {
-                top: -30%; 
+                top: -10%; 
             }
             
             #BreakfastBurrito {
@@ -343,7 +343,7 @@ display: grid;
                 top: -50%;
             } 
             #QuicheLorraine {
-                top: -30%;
+                top: -10%;
             } 
             #ChickenSaladSandwich {
                 top: -50%;
@@ -355,13 +355,13 @@ display: grid;
                 top: -52%;
             } 
             #Lasagna {
-                top: -31%;
+                top: -10%;
             } 
             #GrilledSalmon {
                 top: -41%;
             } 
             #VegetarianChili {
-                top: -13%;
+                top: -3%;
             } 
             #BeefStroganoff {
                 top: -19%;
@@ -376,10 +376,10 @@ display: grid;
                 top: -47%;
             } 
             #Cheesecake {
-                top: -21%;
+                top: -6%;
             } 
             #IcedCoffee {
-                top: -26%;
+                top: -10%;
             } 
             #StrawberryLemonade {
                 top: -25%;

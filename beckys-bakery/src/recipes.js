@@ -21,7 +21,8 @@ export default function recipes() {
 
         let h1 = document.createElement('h1'); 
         h1.classList.add('meal-header'); 
-        h1.textContent = mealName.toUpperCase();
+        // h1.textContent = mealName.toUpperCase();
+        h1.textContent = mealName;
         // h1.style.margin = 0;  
         div.appendChild(h1); 
 

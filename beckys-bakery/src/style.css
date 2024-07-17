@@ -119,7 +119,12 @@ nav {
 
 .hero {
     /* background: url('./img/mae-mu-kID9sxbJ3BQ-unsplash.jpg');  */
-    background-image: url('./img/mae-mu-kID9sxbJ3BQ-unsplash.jpg');
+    /* background-image: url('./img/mae-mu-kID9sxbJ3BQ-unsplash.jpg'); */
+    /* background-image: url('./img/1-Food-File.jpg'); */
+    /* background-image: url('./img/2-Food-File.jpg'); */
+    /* background-image: url('./img/3-Food-File.jpg'); */
+    /* background-image: url('./img/4-Food-File.jpg'); */
+    /* background-image: url('./img/5-Food-File.jpg'); */
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -132,19 +137,110 @@ nav {
 
      h1 {
         /* color: white;  */
+        position: relative; 
         font-family: 'Beckys Bakery';
         font-size: 12rem; 
         font-weight: 400;
         margin-left: 20rem; 
         /* margin-top: 10%;  */
+        z-index: 99; 
      }
 
      h2 {
         /* color: white;  */
+        position: relative; 
         font-size: 3rem; 
         font-weight: 400;
         margin-left: 7.5rem; 
+        z-index: 99; 
      }
+}
+
+.carousel {
+    /* background-color: goldenrod; */
+    /* display: grid;  */
+    /* grid-template: repeat(3, 1fr) / repeat(3, 1fr); */
+}
+
+.pictureFrame {
+    position: absolute; 
+    /* background-color: blue; */
+    width: 100%; 
+    height: 85vh; 
+    margin: 0 auto; 
+    z-index: 98; 
+    border: 1px solid black; 
+    overflow: hidden; 
+    
+    
+    img {
+        position: absolute; 
+        top: 0; 
+        left: 0; 
+        width: 100%; 
+        height: 100%; 
+        object-fit: cover;
+        transition: opacity .75s ease-in-out; 
+        }
+        
+        img:not(.active) {
+        opacity: 0; 
+    }
+
+    img.active {
+        opacity: 1; 
+    }
+}
+
+#prevDiv {
+    top: 50%; 
+    height: 5rem; 
+    width: 5rem; 
+    left: calc(0% + 2.5rem);
+    /* left = 1/2 width */
+    }
+    
+#nextDiv {
+        top: 50%; 
+        height: 5rem; 
+        width: 5rem; 
+        right: 0px; 
+        right: calc(0% + 2.5rem);
+}
+        
+#buttonsDiv {
+    display: flex; 
+    justify-content: center;
+    gap: 1rem; 
+    --width: 24rem; 
+    /* width based on the number of image-dots (2rem per image-dot) */
+    height: 5rem; 
+    width: var(--width); 
+    bottom: 7.5%; 
+    /* left: calc(50%);  */
+    left: calc(50% - (var(--width) / 2)); 
+    /* calc(50% - 1/2 this.width) */
+}
+
+.hidden {
+    display: none;
+}
+
+
+.changeImage {
+    /* background-color: aqua; */
+    color: white; 
+    z-index: 99; 
+    
+    img:hover {
+        cursor: pointer; 
+        opacity: .8; 
+    }
+}
+        
+.svg:not(#prevDiv > img):not(#nextDiv > img) {
+            aspect-ratio: 1/1;
+            height: 2.5rem; 
 }
 
 .hero-text {
@@ -163,10 +259,7 @@ footer {
     justify-content: center;
     align-items: center;
     padding: 1rem 0;
-    
-    .socials {
 
-    }
 }
 
 /* About.JS */

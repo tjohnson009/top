@@ -69,18 +69,22 @@ import './style.css';
 
     // render the js based on which button is clicked
     if (e.target.textContent === 'About') {
+        clearInterval(carousel.automateID); 
         contentDiv.appendChild(about()); 
     } else if (e.target.textContent === 'Recipes') {
+        clearInterval(carousel.automateID); 
         contentDiv.appendChild(recipes()); 
     }
     //  else if (e.target.textContent === 'Catering') {
     //     contentDiv.appendChild(catering()); 
-    // } else if (e.target.textContent === 'Newsletter') {
-    //     contentDiv.appendChild(newsletter()); 
     // } 
-    else {
+    else if (e.target.textContent === 'Newsletter') {
+        clearInterval(carousel.automateID); 
+        contentDiv.appendChild(newsletter()); 
+    } else {
         contentDiv.appendChild(hero); 
         contentDiv.appendChild(heroParagraph); 
+        carousel.automateImageRotation(); 
     }
 }
 

@@ -201,4 +201,19 @@ class Library {
     }
 }
 
+const formTitle = document.querySelector('#title'); 
+const formAuthor = document.querySelector('#author'); 
+const formPageCount = document.querySelector('#pageCount'); 
+const formBookRead = document.querySelector('#read'); 
+let textInputs = [formTitle, formAuthor, formPageCount]; 
+textInputs.forEach(input => {
+    input.addEventListener('input', (e) => {
+        if (!input.validity.valueMissing) {
+            input.setCustomValidity('')
+        } else {
+            input.setCustomValidity('You must fill in a value.'); 
+        }
+    })
+})
+
 let libraryInformation = new Library(); 
